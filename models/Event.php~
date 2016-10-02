@@ -1,0 +1,92 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+use yii\behaviors\SluggableBehavior;
+
+
+/**
+ * This is the model class for table "events".
+ *
+ * @property string $event_id
+ * @property string $event_slug
+ * @property string $event_owner
+ * @property integer $event_status
+ * @property string $event_name
+ * @property string $event_start_time
+ * @property string $event_end_time
+ * @property integer $event_all_day
+ * @property string $event_start_date
+ * @property string $event_end_date
+ * @property string $event_content
+ * @property integer $event_private
+ * @property string $event_category_id
+ * @property string $event_attributes
+ * @property string $event_date_created
+ * @property string $event_date_modified
+ * @property integer $featured
+ */
+class Event extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'events';
+    }
+    
+    public function behaviors()
+    {
+    	return [
+    	[
+    	'class' => SluggableBehavior::className(),
+    	'attribute' => 'event_name',
+    	'slugAttribute' => 'event_slug',
+    	'immutable' => true,
+    	'ensureUnique'=>true,
+    	],
+    	];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['event_name', 'event_content', 'event_start_time'], 'required'],
+            [['event_owner', 'event_status', 'event_all_day', 'event_private', 'event_category_id', 'featured'], 'integer'],
+            [['event_name', 'event_content', 'event_attributes'], 'string'],
+            [['event_start_time', 'event_end_time', 'event_start_date', 'event_end_date', 'event_date_created', 'event_date_modified'], 'safe'],
+            [['event_slug'], 'string', 'max' => 200]
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'event_id' => 'Event ID',
+            'event_slug' => 'Event Slug',
+            'event_owner' => 'Event Owner',
+            'event_status' => 'Event Status',
+            'event_name' => 'Event Name',
+            'event_start_time' => 'Event Start Time',
+            'event_end_time' => 'Event End Time',
+            'event_all_day' => 'Event All Day',
+            'event_start_date' => 'Event Start Date',
+            'event_end_date' => 'Event End Date',
+            'event_content' => 'Event Content',
+            'event_private' => 'Event Private',
+            'event_category_id' => 'Event Category ID',
+            'event_attributes' => 'Event Attributes',
+            'event_date_created' => 'Event Date Created',
+            'event_date_modified' => 'Event Date Modified',
+            'featured' => 'Featured',
+        ];
+    }
+}

@@ -1,0 +1,171 @@
+<?php
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//echo "<pre>";
+//print_r($profile);
+use app\models\States;
+use app\models\Cities;
+use \app\models\PhotoGallery;
+use app\models\Profileimage;
+use app\models\Links;
+?>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column " id="profile-home">
+            <h1 class="text-center"><?php if(isset($profile['name'])){echo $profile['name']; } ?></h1>
+            <div class="row clearfix">        
+
+                <!---right content aria -->
+                <div class="col-md-12  column">
+                    <div class=" clearfix">
+                        <div class="col-md-12">
+                            <ul class="breadcrumb breadcrumb_new">
+                                <li> <a href="#profile-home">Home</a></li>
+                                <li> <a href="#about-us">About us</a></li>
+                                <li> <a href="#staff">Staff</a> </li> 
+                                <li> <a href="#photo-gallery">Photo Gallery</a>  </li>
+                                <li> <a href="#contact-us">Contact us</a></li>
+                                <li> <a href="#important-links">Important Links</a></li>                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="innerpage_bottom detail" >
+                        <div class="col-md-12 col-sm-12 col-xs-12 column ">
+                            <div class=" detail">
+                                <div class="clearfix ">
+                                  
+                                    <?php
+                                        if(isset($bannerImages)&& count($bannerImages)>0)
+                                            {
+                                                $bannerSrc = $bannerImages['0'];
+                                            }
+                                            else
+                                            {
+                                                $bannerSrc='';
+                                            }
+                                    ?>
+                                    <div class="col-md-9 col-sm-8 col-xs-12 full-width" style="background-image:url('<?php echo $bannerSrc;?>');width:100%;height:100%;min-height: 200px;" > 
+                                                                                
+                                    </div>
+
+                                </div>
+
+                                <div class=" column mT60">
+                                    <h2 id="about-us">About us</h2>
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 column ">
+                                            <span class="clstitle"><?php if(isset($profile['name'])){echo $profile['name']; } ?></span> <br>
+                                            <div class="customer_desc">
+                                                <?php $profileImage = Profileimage::getProfileimagePathByProfileID($profile['user_id'],"thumb");
+                                        foreach($profileImage as $pk=>$pv)
+                                        {
+                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <img src="'.$pv.'" alt=""> </div>';
+                                        }
+                                        ?>
+                                                <?php echo $profile['description'] ; ?></div> <br>
+
+
+
+
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column" id="important-links">
+                                            <ul><?php 
+                                                $links = Links::getAllLinksbyUserID($profile['user_id']);
+                                               foreach ($links as $link)
+                                               {
+                                                   echo "<li><a href='".$link['link']."' target='_balnk'><span>".$link['tittle']."</span></a><span>".$link['desc']."</span></li>";
+                                               }
+                                            ?>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="gallery mT60" id="staff">
+                                    <h2>Staff Details</h2>
+                                    <div class="row clearfix" >
+                                        <?php $profileImages = PhotoGallery::getImagePathByProfileID($profile['user_id'],"thumb");
+                                        foreach($profileImages as $pk=>$pv)
+                                        {
+                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <img src="'.$pv.'" alt=""> </div>';
+                                        }
+                                        ?>
+                                        
+                                    </div>
+                                </div>
+                                 <div class="gallery mT60" id="photo-gallery">
+                                    <h2>Photo gallery</h2>
+                                    <div class="row clearfix" >
+                                        <?php $profileImages = PhotoGallery::getImagePathByProfileID($profile['user_id'],"thumb");
+                                        foreach($profileImages as $pk=>$pv)
+                                        {
+                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <img src="'.$pv.'" alt=""> </div>';
+                                        }
+                                        ?>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class=" column mT60" id="contact-us">
+                                    <h2>Get In touch with Us</h2>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 column ">
+                                            <span class="clstitle">Fill the form below and we will contact you</span>
+
+                                            <form>
+                                                <div class="form-group">
+
+                                                    <input type="text" class="form-control"  placeholder="Name"id="name">
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <input type="email"  placeholder="enter your Phone Number " class="form-control" id="Phone">
+                                                </div>        <div class="form-group">
+
+                                                    <input type="email"  placeholder="enter your Email id " class="form-control" id="email">
+                                                </div>                    <div class="form-group">      
+                                                    <textarea placeholder="Query "  class="form-control" rows="" cols="" name=""></textarea>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="button" class="btn  btn-primary btn-lg" value="SUBMIT">
+                                                </div>
+                                            </form>
+
+
+
+
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 column "> <br>
+                                             <p>
+                                            <?php if(isset($profile['address'])){echo "<strong>Address : </strong>".$profile['address']; } ?><br>
+                                            <?php if(isset($profile['state'])){echo "<strong>State : </strong>".(States::getStateByID($profile['state'])); } ?><br>
+                                            <?php if(isset($profile['city'])){echo "<strong>City : </strong>".(Cities::getCityByID($profile['city'])); } ?><br>
+                                            <?php if(isset($profile['zipcode'])){echo"<strong>Zipcode : </strong>". $profile['zipcode']; } ?><br>
+                                            <?php if(isset($profile['public_email'])){echo "<strong>Email : </strong>".$profile['public_email']; } ?> <br>
+                                            <?php if(isset($profile['mobile'])){echo "<strong>Mobile : </strong>".$profile['mobile']; } ?></p><br>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

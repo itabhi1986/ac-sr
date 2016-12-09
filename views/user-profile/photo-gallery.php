@@ -10,12 +10,12 @@ use kartik\file\FileInput;
 $model->user_id = $user_id;
 ?>
 <div class="container">
-    <div class="row clearfix">
+    <div class="row clearfix bg-gry">
         <div class="col-md-12 column ">
             <div class="row clearfix">
                  <?= $this->render('user-menu') ?>
                   <!---right content aria -->
-                <div class="col-md-9 col-sm-8 column">
+                <div class="col-md-9 col-sm-8 column bg-wht">
                     <div class="row clearfix categories">
                 
 
@@ -35,22 +35,20 @@ $model->user_id = $user_id;
 
     <?= $form->field($model, 'sub_tittle')->textInput(['maxlength' => true]) ?>
              </div>
-    <?= $form->field($model, 'path')->fileInput(array('class' =>'upload_img' ,'placeholder'=> 'Select a Image','accept' => 'image/*'))->label('Upload Image');   ?>
-         <div class="col-md-6">
+    
+         <div class="col-md-6"><?= $form->field($model, 'path')->fileInput(array('class' =>'upload_img' ,'placeholder'=> 'Select a Image','accept' => 'image/*'))->label('Upload Image');   ?>
          <?= $form->field($model, 'user_id')->hiddenInput()->label(''); ?>
         </div>
-        <div class="col-md-6">
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+        <div class="col-md-12">
+
+        <?= Html::submitButton($model->isNewRecord ? 'Upload Images' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    
         </div>
 
     <?php ActiveForm::end(); ?>
 
-</div>
-</div>
-</div>
-                    <div>
+                  <div class="col-md-12">
+ <div class="pic-thum">
                     <?php
                                 if(isset($photoImages)&& count($photoImages)>0)
                                 {
@@ -66,7 +64,10 @@ $model->user_id = $user_id;
                         ?>
                                         </div>
 
-          
+          </div>
+</div>
+</div>
+</div>
                     </div>
                 </div>
 

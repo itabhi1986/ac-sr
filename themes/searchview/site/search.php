@@ -6,6 +6,9 @@
  */
 $this->title = 'Search 2 City';
 
+use yii\helpers\Url;
+$baseURL = Url::base(true);
+$imageURL= $baseURL."/themes/searchview/images/";
 ?>
  <div class="container">
     <div class="row clearfix">
@@ -15,40 +18,10 @@ $this->title = 'Search 2 City';
         <!-- left nav--->
          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 column column ">
             <div class="row clearfix left_side">
-              <ul class="leftmenu">
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>  Air Tickets</a></li>
-  <li><a href="#"> <i class="fa fa-money icon" aria-hidden="true"></i> Apply for Loans</a></li>
-  <li><a href="#"> <i class="fa fa-car icon" aria-hidden="true"></i> Auto care </a></li>
-  <li><a href="#"> <i class="fa fa-truck icon" aria-hidden="true"></i>Automobile</a></li>
-  <li><a href="#"> <i class="fa fa-list-alt icon" aria-hidden="true"></i>Bills &amp; Recharge</a></li>
-  <li><a href="#"> <i class="fa fa-bed icon" aria-hidden="true"></i>Book Hotel</a></li>
-  <li><a href="#"> <i class="fa fa-bus icon" aria-hidden="true"></i>Books Bus</a></li>
-  <li><a href="#"> <i class="fa fa-car icon" aria-hidden="true"></i>Cabs &amp; Car rentals</a></li>
-  <li><a href="#"> <i class="fa fa-coffee icon" aria-hidden="true"></i>Caterers</a></li>
-  <li><a href="#"> <i class="fa fa-medkit icon" aria-hidden="true"></i>Chemists</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Civil Contractors</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Courier</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Daily Needs</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Dance &amp; Music</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Deals &amp; Offers</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Doctor</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Education</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Emergency</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Entertainment</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Event Organizer</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Fitness</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Flights</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Flowers</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Home Decor</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Home Improvements</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Hospitals</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Hotels</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>House Keeping</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Industrial Products</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Insurance</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>Interior Designer</a></li>
-  <li><a href="#"> <i class="fa fa-plane icon" aria-hidden="true"></i>On Demand Services</a></li>
-</ul>
+               <div class="addbanner">
+                                             <img src="<?php echo $imageURL."contactus.jpg"?>">
+                                            
+                                        </div>
             </div>
           </div>
         

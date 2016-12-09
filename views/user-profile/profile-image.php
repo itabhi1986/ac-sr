@@ -13,14 +13,14 @@ $model->user_id = $user_id;
 ?>
 
 <div class="container">
-    <div class="row clearfix">
+    <div class="row clearfix bg-gry">
         <div class="col-md-12 column ">
             <div class="row clearfix">
                 <?= $this->render('user-menu') ?>
 
                 <!---right content aria -->
-                <div class="col-md-9 col-sm-8 column">
-                    <div class="row clearfix categories">
+                <div class="col-md-9 col-sm-8 column bg-wht">
+                    <div class="row clearfix categories profile-images">
                         <div class="photo-gallery-form">
                             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
@@ -39,8 +39,7 @@ $model->user_id = $user_id;
                             <?php ActiveForm::end(); ?>
 
                         </div>
-                    </div>
-                    <div>
+                        <div class="pic-thum">
                         <?php
                                 if(isset($profileImages)&& count($profileImages)>0)
                                 {
@@ -55,6 +54,8 @@ $model->user_id = $user_id;
                         
                         ?>
                     </div>
+                    </div>
+                    
                 </div>
 
             </div>

@@ -24,11 +24,12 @@ use app\models\Banner;
 use app\models\Profileimage;
 use app\models\Links;
 use yii\db\ActiveRecord;
+use app\models\StaffGallery;
 
 class UserProfileController extends Controller
 {
 
-    public $layout = "withoutbanner";
+    public $layout = "user";
     public function actionIndex()
     {
         
@@ -204,6 +205,37 @@ class UserProfileController extends Controller
         
         
        return $this->render('profile-image',['model' => $model,'user_id'=>$user_id,'profileImages'=>$profileImages]); 
+    }
+    
+    
+    public function actionStaff()
+    {
+        
+        $user_id = Yii::$app->user->getId();
+       	$model = "";
+    	if($user_id){
+	    	 $model = new StaffGallery();
+                 $staffImages = StaffGallery::getImagePathByProfileID($user_id,'thumb');
+    	}
+        
+        
+        if ($model->load(Yii::$app->request->post())){
+            $image = UploadedFile::getInstance($model, 'path');
+            
+            if (isset($image) && !empty($image)) {
+                
+                $img_res = $model->saveImages($user_id, $image,$model->load(Yii::$app->request->post()));
+                    if($img_res==true)
+                    {
+                                         
+                        
+                    }
+                }
+                                
+            }
+            
+         return $this->render('staff',['model' => $model,'user_id'=>$user_id,'staffImages'=>$staffImages]);
+        
     }
 }
 ?>

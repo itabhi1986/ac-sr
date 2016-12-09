@@ -18,11 +18,7 @@
                     <div class="search_box">
                     
                       <input type="text" name="" value="Search..." class="top_search">
-                      <select class="select-city">
-                      <option>select city</option>                      
-                       <option>select city</option>
-                        <option>select city</option>
-                    </select>
+                     
                       <input type="button" value="Search NOW" class="top_search_btn">
                     </div>
                     <div class="search_box_bg"></div>

@@ -3,13 +3,20 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-
+use yii\helpers\Url;
+$baseURL = Url::base(true);
+$imageURL= $baseURL."/themes/searchview/images/"; 
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container">
-    <div class="row">     
+    <div class="row">
+    <div class="content-page">  
+    
+     <div class="col-md-8">
+         
+         
         <h1 class="bl heading-search2city">ABOUT US</h1>
 
 <p>Stop! Your search ends here. If you are looking to have a website that is performance based,profitable and goal-centered then you are at the right spot. SEARCH2CITY is a platform
@@ -73,6 +80,12 @@ schools, sports, clubs etc. Helping you and your business is all what we do!</p>
 from Neemrana (Rajasthan). Bringing a platform where beginners and profiles with low
 
 budget can also work is my motive behind Search2city.</p>
+</div>
+ <div class="col-md-4">
+         
+         <img src="<?php echo $imageURL."aboutus.jpg"?>">
+     </div>   
+</div>
     </div>
 </div>
    

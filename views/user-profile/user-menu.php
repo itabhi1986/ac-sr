@@ -16,6 +16,7 @@ use yii\helpers\Html;
             <li><a href="/user-profile/photo-gallery/"> <i class="fa fa-plane icon" aria-hidden="true"></i>Photo Gallery</a></li>            
             <li><a href="/user-profile/settings/"> <i class="fa fa-plane icon" aria-hidden="true"></i>Important Links</a></li>
             <li><a href="/user-profile/banner/"> <i class="fa fa-plane icon" aria-hidden="true"></i>Banner Images</a></li>
+            <li><a href="/user-profile/staff/"> <i class="fa fa-plane icon" aria-hidden="true"></i>Staff Details</a></li>
             <li> <?php  $url = Html::a('<span class="fa fa-plane icon" aria-hidden="true"></span> Logout',
                         ['//user/security/logout/'],
                         ['class' => '', 'data-method'=>'post']);

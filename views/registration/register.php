@@ -8,6 +8,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+$baseURL = Url::base(true);
+$imageURL= $baseURL."/themes/searchview/images/"; 
 
 /**
  * @var yii\web\View              $this
@@ -18,11 +21,13 @@ use yii\widgets\ActiveForm;
 $this->title = Yii::t('user', 'Sign up');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="container">
 <div class="">
-    <div class="col-md-4 ">
-                    <div class="panel-heading">
-            <h3 class="panel-title"><?= Html::encode($this->title) ?></h3>
+    <div class="col-md-7  col-sm-7 ">
+     <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= Html::encode($this->title) ?></h3>
             </div>
             <div class="panel-body">
                 <?php  $form = ActiveForm::begin([
@@ -51,4 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
         </p>
     </div>
 </div>
+    <div class="col-md-5  col-sm-5 ">
+        
+          <img src="<?php echo $imageURL."contactus.jpg"?>">
+    </div>
 </div>  

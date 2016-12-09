@@ -11,6 +11,9 @@ use app\models\Cities;
 use \app\models\PhotoGallery;
 use app\models\Profileimage;
 use app\models\Links;
+use yii\helpers\Url;
+$baseURL = Url::base(true);
+$imageURL= $baseURL."/themes/searchview/images/"; 
 ?>
 
 <div class="container">
@@ -48,16 +51,17 @@ use app\models\Links;
                                                 $bannerSrc='';
                                             }
                                     ?>
-                                    <div class="col-md-9 col-sm-8 col-xs-12 full-width" style="background-image:url('<?php echo $bannerSrc;?>');width:100%;height:100%;min-height: 200px;" > 
+                                    <div class="prfilebanner-image full-width" style="background-image:url('<?php echo $bannerSrc;?>');" > 
                                                                                 
                                     </div>
 
                                 </div>
-
+                            <div class="row">
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 column ">
                                 <div class=" column mT60">
                                     <h2 id="about-us">About us</h2>
-                                    <div class="row">
-                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 column ">
+                                    
+                                       
                                             <span class="clstitle"><?php if(isset($profile['name'])){echo $profile['name']; } ?></span> <br>
                                             <div class="customer_desc">
                                                 <?php $profileImage = Profileimage::getProfileimagePathByProfileID($profile['user_id'],"thumb");
@@ -72,23 +76,9 @@ use app\models\Links;
 
 
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column" id="important-links">
-                                            <ul><?php 
-                                                $links = Links::getAllLinksbyUserID($profile['user_id']);
-                                               foreach ($links as $link)
-                                               {
-                                                   echo "<li><a href='".$link['link']."' target='_balnk'><span>".$link['tittle']."</span></a><span>".$link['desc']."</span></li>";
-                                               }
-                                            ?>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="gallery mT60" id="staff">
+                                            <div class="gallery mT60" id="staff">
                                     <h2>Staff Details</h2>
-                                    <div class="row clearfix" >
+                                    <div class=" clearfix" >
                                         <?php $profileImages = PhotoGallery::getImagePathByProfileID($profile['user_id'],"thumb");
                                         foreach($profileImages as $pk=>$pv)
                                         {
@@ -98,9 +88,9 @@ use app\models\Links;
                                         
                                     </div>
                                 </div>
-                                 <div class="gallery mT60" id="photo-gallery">
+                                     <div class="gallery mT60" id="photo-gallery">
                                     <h2>Photo gallery</h2>
-                                    <div class="row clearfix" >
+                                    <div class=" clearfix" >
                                         <?php $profileImages = PhotoGallery::getImagePathByProfileID($profile['user_id'],"thumb");
                                         foreach($profileImages as $pk=>$pv)
                                         {
@@ -110,11 +100,10 @@ use app\models\Links;
                                         
                                     </div>
                                 </div>
-
                                 <div class=" column mT60" id="contact-us">
                                     <h2>Get In touch with Us</h2>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 column ">
+                                    <div class="">
+                                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 column ">
                                             <span class="clstitle">Fill the form below and we will contact you</span>
 
                                             <form>
@@ -142,8 +131,9 @@ use app\models\Links;
 
 
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 column "> <br>
-                                             <p>
+                                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 column ">
+                                            <span class="clstitle">Contact us</span>
+                                             <p class="address-profile">
                                             <?php if(isset($profile['address'])){echo "<strong>Address : </strong>".$profile['address']; } ?><br>
                                             <?php if(isset($profile['state'])){echo "<strong>State : </strong>".(States::getStateByID($profile['state'])); } ?><br>
                                             <?php if(isset($profile['city'])){echo "<strong>City : </strong>".(Cities::getCityByID($profile['city'])); } ?><br>
@@ -152,7 +142,32 @@ use app\models\Links;
                                             <?php if(isset($profile['mobile'])){echo "<strong>Mobile : </strong>".$profile['mobile']; } ?></p><br>
                                         </div>
                                     </div>
+                                </div>           
+                                    </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column" id="important-links">
+                                            
+                                    <div class=" column mT60">
+                                        <h2 >Important Links</h2>
+                                    <ul><?php 
+                                                $links = Links::getAllLinksbyUserID($profile['user_id']);
+                                               foreach ($links as $link)
+                                               {
+                                                   echo "<li><a href='".$link['link']."' target='_balnk'><span>".$link['tittle']."</span></a><span>".$link['desc']."</span></li>";
+                                               }
+                                            ?>
+                                            </ul>
+                                        <div class="addbanner">
+                                             <img src="<?php echo $imageURL."contactus.jpg"?>">
+                                            
+                                        </div>
+                                        </div>
+                                
                                 </div>
+
+                            
+                                
+
+                                
 
 
 

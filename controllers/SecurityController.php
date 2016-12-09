@@ -23,6 +23,7 @@ use dektrium\user\traits\AjaxValidationTrait;
 
 class SecurityController extends BaseSecurityController
 {    
+      public $layout = "@app/views/layouts/login";  
 
     public function actionLogin()
     {

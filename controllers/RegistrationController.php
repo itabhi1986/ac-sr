@@ -12,7 +12,7 @@ use app\models\RegistrationForm;
 
 
 class RegistrationController extends BaseRegistrationController {
-    
+    public $layout = "@app/views/layouts/login";
     public function actionRegister()
     {
        

@@ -11,12 +11,12 @@ $model->user_id = $user_id;
 
 <div class="container">
     <div class="row clearfix">
-        <div class="col-md-12 column ">
+        <div class="col-md-12 column bg-gry">
             <div class="row clearfix">
                  <?= $this->render('user-menu') ?>
 
                 <!---right content aria -->
-                <div class="col-md-9 col-sm-8 column">
+                <div class="col-md-9 col-sm-8 column bg-wht">
                     <div class="row clearfix categories">
                         <div class="links-form">
 

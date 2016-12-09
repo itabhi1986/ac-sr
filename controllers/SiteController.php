@@ -17,6 +17,7 @@ use app\models\Profileimage;
 
 class SiteController extends Controller
 {
+        public $layout = "@app/views/layouts/withoutbanner";
 	public function init(){
 		parent::init();
 		//print_r($this->actions());
@@ -61,8 +62,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-       
-        return $this->render('search-profile');
+       $this->layout = "@app/views/layouts/main";
+        return $this->render('index');
         
         
     }

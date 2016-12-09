@@ -13,7 +13,16 @@ use yii\bootstrap\NavBar;
             <div class="col-md-3 col-sm-4 column"> <img alt="140x140" src="<?php echo $theme->getUrl('/images/logo.png'); ?>" class="fl logo"> </div>
             <div class="col-md-9 col-sm-8 column right_logo">
           <nav role="navigation" class="navbar navbar-default">
-              <?php
+          <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+             <div class="collapse navbar-collapse"  id="myNavbar"> <?php
                     echo Nav::widget([
                         'options' => ['class' => 'navbar-nav navbar-right'],
                         'items' => [
@@ -31,7 +40,7 @@ use yii\bootstrap\NavBar;
                     ]);
                     ?>
             
-          </nav> </div>
+         </div> </div></nav> </div>
           </div>
         </div>
       </div>

@@ -6,4 +6,6 @@
  * and open the template in the editor.
  */
 
-echo "Hello";
+?>
+
+Thank you so much for the registration

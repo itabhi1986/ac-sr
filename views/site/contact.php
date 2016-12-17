@@ -76,6 +76,16 @@ $this->params['breadcrumbs'][] = $this->title;
      <div class="col-md-5">
          
          <img src="<?php echo $imageURL."contactus.jpg"?>">
+         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sidebar_search2city -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7853046234892696"
+     data-ad-slot="5152767964"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
      </div>
     <div class="row"></div>
     </div>

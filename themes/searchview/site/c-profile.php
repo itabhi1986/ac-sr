@@ -28,11 +28,6 @@ $imageURL= $baseURL."/themes/searchview/images/";
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-                                             <img src="<?php echo $imageURL."contactus.jpg"?>">
-                                              <img src="<?php echo $imageURL."contactus.jpg"?>">
-                                              <img src="<?php echo $imageURL."contactus.jpg"?>">
-                                              <img src="<?php echo $imageURL."contactus.jpg"?>">
-                                            
                                         </div>
             </div>
           </div>

@@ -10,23 +10,9 @@ use yii\bootstrap\NavBar;
       <div class="row clearfix">
         <div class="col-md-12 column">
           <div class="row clearfix">
-            <div class="col-md-3 col-sm-3 column"> <img alt="140x140" src="<?php echo $theme->getUrl('/images/logo.png'); ?>" class="fl logo"> </div>
-             <div class="col-md-4 col-sm-4 column about-search">
-                <div class="main_search_box">
-                  <div class="search_box_outer">
-                    <div class="search_box">
-                     <div class="input-append">
-                         <input class="span1 top_search" id="appendedInputButton" type="text" placeholder="search..."/>
-                        <button type="submit" class="btn top_search_btn">
-                          <i class="icon-search"></i>
-                        </buttton>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-             </div>
-          <div class="col-md-5 col-sm-5 about-nav  column right_logo">
-          <nav role="navigation" class="navbar navbar-default home-nav ">
+            <div class="col-md-3 col-sm-4 column"> <img alt="140x140" src="<?php echo $theme->getUrl('/images/logo.png'); ?>" class="fl logo"> </div>
+            <div class="col-md-9 col-sm-8 column right_logo">
+          <nav role="navigation" class="navbar navbar-default">
           <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"">

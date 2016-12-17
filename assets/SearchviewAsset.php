@@ -24,6 +24,7 @@ class SearchviewAsset extends AssetBundle
     ];
     public $js = [
          '/themes/searchview/js/scripts.js',
+        '/themes/searchview/js/bootstrap.min.js',   
         
        
     ];

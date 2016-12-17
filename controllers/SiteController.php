@@ -15,17 +15,17 @@ use app\models\Profile;
 use app\models\Banner;
 use app\models\Profileimage;
 
-class SiteController extends Controller
-{
-        public $layout = "@app/views/layouts/withoutbanner";
-	public function init(){
-		parent::init();
-		//print_r($this->actions());
-		//$this->action = 'index';exit;	
-	}
-	
-    public function behaviors()
-    {
+class SiteController extends Controller {
+
+    public $layout = "@app/views/layouts/withoutbanner";
+
+    public function init() {
+        parent::init();
+        //print_r($this->actions());
+        //$this->action = 'index';exit;	
+    }
+
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -47,8 +47,7 @@ class SiteController extends Controller
         ];
     }
 
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -60,16 +59,12 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
-    {
-       $this->layout = "@app/views/layouts/main";
+    public function actionIndex() {
+        $this->layout = "@app/views/layouts/home";
         return $this->render('index');
-        
-        
     }
 
-    public function actionLogin()
-    {
+    public function actionLogin() {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -79,19 +74,17 @@ class SiteController extends Controller
             return $this->goBack();
         }
         return $this->render('login', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
 
         return $this->goHome();
     }
 
-    public function actionContactUs()
-    {
+    public function actionContactUs() {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -99,73 +92,54 @@ class SiteController extends Controller
             return $this->refresh();
         }
         return $this->render('contact', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
-    public function actionAbout()
-    {
+    public function actionAbout() {
         return $this->render('about');
     }
-    
-    public function ActionThankyou()
-    {
+
+    public function ActionThankyou() {
         return $this->render("thankyou");
     }
-    
-    public function actionSearchProfile()
-    {
-       
-        return $this->render("search-profile");
+
+    public function actionSearchProfile() {
+
+        if (Yii::$app->request->post()) {
+            $postData = Yii::$app->request->post();
+            $searchText = $postData['s'];
+            print_r($searchText);exit;
+            $profiles = array();
+            return $this->render("c-profile", [
+                        'profiles' => $profiles]);
+        }
     }
-    
-     public function actionAbc()
-    {
-       
-         return $this->render('about');
-    }
-    
-     public function actionDef()
-    {
-       
-        return $this->render("search-profile");
-    }
-    
-    public function actionTest()
-    {
-        $output = Category::getAllprofileOfCategory('');
-        
-    }
-    
-    public function actionCatgoriesSlug($slug_url)
-    {
+
+    public function actionCatgoriesSlug($slug_url) {
         $category = trim($slug_url);
-        
+
         $profiles = Category::getAllprofileOfCategory($category);
-        
-        return $this->render("c-profile",[
-            'profiles' => $profiles]);
-        
+
+        return $this->render("c-profile", [
+                    'profiles' => $profiles]);
     }
-    
-    
-     public function actionProfileSlug($slug_url,$profile_url)
-    {
-        $this->layout="withoutbanner";
+
+    public function actionProfileSlug($slug_url, $profile_url) {
+        $this->layout = "withoutbanner";
         $category = trim($slug_url);
         $profile = trim($profile_url);
         $profileID = Profile::getProfileIDBySlug($profile_url);
-        
+
         $profileDetails = Profile::getProfileDetails($profileID);
         $bannerImages = Banner::getBannerPathByProfileID($profileID);
         //$bannerImages = Profileimage::getProfileimagePathByProfileID($profileID);
-        
+
         return $this->render(
-                "profile",[
+                        "profile", [
                     'profile' => $profileDetails,
-                    'bannerImages'=>$bannerImages
-                ]);
-        
+                    'bannerImages' => $bannerImages
+        ]);
     }
-        
+
 }

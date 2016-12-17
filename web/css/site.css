@@ -38,8 +38,15 @@
 	width:100%;
 	height:6px;}
 .top_header {
-    margin: 14px 0 10px;
+    box-shadow: 4px 0 15px #999;
+    margin: 0 0 10px;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
+.top_header.home_header {
+    box-shadow: none;
+}
+
 .top_menu_outer{
 	width:100%;
 	background:#393b46;
@@ -118,27 +125,27 @@
 	z-index:9;
 }
 .top_search {
-    border: none;
+    border: 1px solid #d0d0d0;
     border-radius: 5px 0 0 5px;
     color: #132e40;
     float: left;
-    font-size: 22px;
-    height: 58px;
+    font-size: 16px;
+    height: 40px;
     padding: 0 20px;
-    width: 50%;
+    width: 81%;
 }
 .top_search_btn {
-    background: #393b46;
-    border: medium none;
+       background: #2188b9;
+    border: 1px solid #2188b9;
     border-radius: 0 5px 5px 0;
     color: #fff;
     display: inline-block;
-    font-size: 22px;
-    height: 54px;
+    font-size: 16px;
+    height: 40px;
     padding: 0 10px;
     position: absolute;
     right: 2px;
-    top: 2px;
+    top: 0px;
 }
 .search_box_outer {
     border-radius: 5px;
@@ -153,7 +160,7 @@
     display: inline-block;
     margin: 0 auto;
     position: relative;
-    width: 800px;
+    width: 600px;
 }
 .search_detail {
      float: left;
@@ -191,7 +198,7 @@
     background: rgba(14, 13, 13, 0.8);
 }
 .search_box_bg {
-    background:  #000;
+    /*background:  #000;*/
     border-radius: 5px;
     height: 88px;
     left: 0;
@@ -336,9 +343,14 @@
     font-size: 24px;
     margin: 24px 0 0 60px;
 }
-.bottom_footer{
-	background:#f5f5f5;
-	padding: 20px 0;}
+.bottom_footer {
+    background: #f5f5f5;
+    bottom: 0;
+    left: 0;
+    padding: 9px 0;
+    position: fixed;
+    right: 0;
+}
 #bottom_footer_menu{
 	margin:0px;
 	padding:0px;}
@@ -452,7 +464,7 @@ border: medium none;
     top: 50%;
 }
 .top_contant_bg_inner{
-	margin: -110px -400px 0 0;
+	margin: -145px -300px 0 0;
     top: 50%;
     padding-bottom: 30px;
     right: 50%;
@@ -464,7 +476,7 @@ border: medium none;
     z-index: 10;
 	}
 .top_contant_bg {
-     background:url(../themes/searchview/images/slider_img2.jpg) no-repeat top center;
+    /* background:url(../themes/searchview/images/slider_img2.jpg) no-repeat top center;*/
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -539,9 +551,10 @@ ul.leftmenu {
 	
 	.home{ display:none;}
 .afterlogin .top_header {
-	padding-bottom:20px;
-    box-shadow: 0px 7px 11px #ccc;
-	margin-bottom:40px;
+    box-shadow: 0 7px 11px #ccc;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    padding-top: 14px;
 }
 .bg-wht .categories { margin-left:15px; margin-bottom:30px;}
 
@@ -581,8 +594,8 @@ ul.leftmenu {
 .conect-pages .top_search_btn { height:44px;}
 .conect-pages .select-city, .conect-pages .top_search {
     float: left;
-    height: 48px;
-	font-size:18px;
+    height: 44px;
+	font-size:16px;
 	}
 .conect-pages .search_detail > span {
     font-size: 14px;
@@ -591,6 +604,34 @@ ul.leftmenu {
     padding: 9px 13px;}
 .conect-pages  .top_contant_bg_inner {
     margin: -83px -400px 0 0;}
+.home-nav.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #428bca;
+	background:none;
+}
+nav.navbar.navbar-default.home-nav {
+    min-height: auto;
+	margin:0;
+}
+.home-nav.navbar-default .navbar-nav{ margin:0;}
+.home-nav.navbar-default .navbar-nav>li>a {
+    padding: 0px;
+	margin:0 10px;
+	line-height:normal;
+	font-size:12px;
+	}
+.about-search .main_search_box{  margin-top: 24px; width:100%;}
+.about-search .search_box_outer{  padding: 0px; }
+.about-nav .home-nav.navbar-default .navbar-nav > li > a {
+    font-size: 17px;
+    line-height: normal;
+    margin: 0 12px;
+    padding: 0;
+}
+.about-nav {
+    margin-top: 30px;
+}
+.about-search .top_search { width:94%;}
+.conect-pages{ padding-bottom: 35px;}
 @media only screen and (max-width: 960px) {
 	.top_contant_bg_inner {
     margin: -83px -361px 0 0 !important;
@@ -639,6 +680,9 @@ ul.leftmenu {
     margin: 35px 0px 0 0 !important;
 }
 }
+@media only screen and (max-width: 767px) { img.logo1 {
+    max-width: 200px;
+}}
 .content-page h1{ color:#2188b9; margin:0 0 20px;}
 .address-profile{ line-height: 25px;}
 .addbanner{ margin: 15px 0 0;}

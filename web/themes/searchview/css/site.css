@@ -138,7 +138,7 @@
 	z-index:9;
 }
 .top_search {
-    border: none;
+     border: 1px solid #d0d0d0;
     border-radius: 5px 0 0 5px;
     color: #132e40;
     float: left;
@@ -148,17 +148,17 @@
     width: 50%;
 }
 .top_search_btn {
-    background: #393b46;
-    border: medium none;
+        background: #2188b9;
+    border: 1px solid #2188b9;
     border-radius: 0 5px 5px 0;
     color: #fff;
     display: inline-block;
     font-size: 22px;
-    height: 54px;
+    height: 59px;
     padding: 0 10px;
     position: absolute;
     right: 2px;
-    top: 2px;
+    top: -1px;
 }
 .search_box_outer {
     border-radius: 5px;
@@ -168,13 +168,13 @@
     padding: 15px;
     position: relative;
     width: 100%;
-	background:rgba(0, 0, 0, 0.6);
+	/*background:rgba(0, 0, 0, 0.6);*/
 }
 .main_search_box {
     display: inline-block;
     margin: 0 auto;
     position: relative;
-    width: 800px;
+    width: 600px;
 }
 .search_detail {
      float: left;
@@ -212,7 +212,7 @@
     background: rgba(14, 13, 13, 0.8);
 }
 .search_box_bg {
-    background:  #000;
+    /*background:  #000;*/
     border-radius: 5px;
     height: 88px;
     left: 0;
@@ -477,7 +477,7 @@ border: medium none;
     top: 50%;
 }
 .top_contant_bg_inner{
-	margin: -110px -400px 0 0;
+	margin: -145px -400px 0 0;
     top: 50%;
     padding-bottom: 30px;
     right: 50%;
@@ -488,8 +488,11 @@ border: medium none;
     text-align: center;
     z-index: 10;
 	}
+img.logo1 {
+    max-width: 320px;
+}
 .top_contant_bg {
-    background:url(../images/slider_img2.jpg) no-repeat top center;
+    /*background:url(../images/slider_img2.jpg) no-repeat top center;*/
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -631,3 +634,19 @@ div#important-links ul {
     float: left;
 }
 .column.thumbnail_images img{ border:1px solid #ccc; padding:3px; border-radius:5px;}
+
+.home-nav.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #428bca;
+	background:none;
+}
+nav.navbar.navbar-default.home-nav {
+    min-height: auto;
+	margin:0;
+}
+.home-nav.navbar-default .navbar-nav{ margin:0;}
+.home-nav.navbar-default .navbar-nav>li>a {
+    padding: 0px;
+	margin:0 10px;
+	line-height:normal;
+	font-size:12px;
+	}

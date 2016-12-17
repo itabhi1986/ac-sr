@@ -5,14 +5,14 @@ use yii\bootstrap\NavBar;
 ?><div class="outer_container">
   <div class="bg_blue"></div>
   <div class="bg_orange"></div>
-  <div class="top_header">
+  <div class="top_header home_header">
     <div class="container">
       <div class="row clearfix">
         <div class="col-md-12 column">
           <div class="row clearfix">
-            <div class="col-md-3 col-sm-4 column"> <img alt="140x140" src="<?php echo $theme->getUrl('/images/logo.png'); ?>" class="fl logo"> </div>
-            <div class="col-md-9 col-sm-8 column right_logo">
-          <nav role="navigation" class="navbar navbar-default">
+<!--            <div class="col-md-3 col-sm-4 column"> <img alt="140x140" src="<?php /*?><?php echo $theme->getUrl('/images/logo.png'); ?><?php */?>" class="fl logo"> </div>
+-->            <div class="col-md-12 col-sm-12 column right_logo">
+          <nav role="navigation" class="navbar navbar-default home-nav ">
           <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"">

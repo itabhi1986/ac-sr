@@ -76,6 +76,9 @@ $this->params['breadcrumbs'][] = $this->title;
      <div class="col-md-5">
          
          <img src="<?php echo $imageURL."contactus.jpg"?>">
+              <img src="<?php echo $imageURL."aboutus.jpg"?>">
+         <?php if(YII_ENV_PROD)
+{?>
          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- sidebar_search2city -->
 <ins class="adsbygoogle"
@@ -86,6 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<?php } ?>
      </div>
     <div class="row"></div>
     </div>

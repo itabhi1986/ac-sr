@@ -14,6 +14,7 @@ use yii\helpers\Url;
 use app\models\Profile;
 use app\models\Banner;
 use app\models\Profileimage;
+use app\models\ProfileSearch;
 
 class SiteController extends Controller {
 
@@ -105,15 +106,16 @@ class SiteController extends Controller {
     }
 
     public function actionSearchProfile() {
-
-        if (Yii::$app->request->post()) {
-            $postData = Yii::$app->request->post();
-            $searchText = $postData['s'];
-            print_r($searchText);exit;
-            $profiles = array();
-            return $this->render("c-profile", [
-                        'profiles' => $profiles]);
+        $profiles = array();
+        if (Yii::$app->request->get()) {
+            $postData = Yii::$app->request->get();
+            $searchText = $postData['s'];            
+            $profiles = ProfileSearch::customSearch($searchText);          
+           
         }
+        return $this->render("c-profile", [
+                        'profiles' => $profiles,
+                        'searchText'=>$searchText]);
     }
 
     public function actionCatgoriesSlug($slug_url) {

@@ -11,10 +11,11 @@
                 <div class="main_search_box">
                   <div class="search_box_outer">
                     <div class="search_box">
-                    
-                      <input type="text" name="" value="Search..." class="top_search">
-                     
-                      <input type="button" value="Search NOW" class="top_search_btn">
+                        <form action="/search/" method="get">
+                        <input type="text" name="s" value="" class="top_search" placeholder="Search....">
+                        
+                      <input type="submit" value="Search NOW" class="top_search_btn">
+                        </form>
                     </div>
                   </div>
                   </div>

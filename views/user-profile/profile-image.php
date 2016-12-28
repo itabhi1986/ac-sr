@@ -28,9 +28,8 @@ $model->user_id = $user_id;
 
                             <?= $form->field($model, 'path')->fileInput(array('class' => 'upload_img', 'placeholder' => 'Upload/Change Profle Photo', 'accept' => 'image/*'))->label('Upload/Change Profile Photo'); ?>
 
-                            <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('') ?>
-                            <?= $form->field($model, 'heading')->textInput(['maxlength' => true])->label('') ?>
-                            <?= $form->field($model, 'desc')->textInput(['maxlength' => true])->label('') ?>
+                            <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('Name') ?>
+                            
 
                             <div class="form-group">
                             <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

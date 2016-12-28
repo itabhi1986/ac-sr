@@ -10,7 +10,7 @@ $baseURL = Url::base(true);
 $imageURL= $baseURL."/themes/searchview/images/";
     foreach($profiles as $key=>$value)
     {
-       
+      
         echo '<div class=" categories">
         <div class="clearfix ">
         <div class="col-md-3 col-sm-4 col-xs-4 clsmd3 full-width"> <img src='.$imageURL.'contactus.jpg> </div>

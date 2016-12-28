@@ -16,8 +16,11 @@ use yii\bootstrap\NavBar;
                   <div class="search_box_outer">
                     <div class="search_box">
                      <div class="input-append">
-                         <input class="span1 top_search" id="appendedInputButton" type="text" placeholder="search..."/>
-                        <button type="submit" class="btn top_search_btn">
+                          <form action="/search/" method="get">
+                         <input class="span1 top_search" id="appendedInputButton" type="text" placeholder="search..." name="s"/>
+                         
+                         <button type="submit" class="btn top_search_btn">
+                             </form>
                           <i class="icon-search"></i>
                         </buttton>
                     </div>

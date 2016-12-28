@@ -18,7 +18,10 @@ $imageURL= $baseURL."/themes/searchview/images/";
          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 column column ">
             <div class="row clearfix mT60 ">
                <div class="addbanner">
-                   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                         <img src="<?php echo $imageURL."aboutus.jpg"?>">
+         <?php if(YII_ENV_PROD)
+{?>
+         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- sidebar_search2city -->
 <ins class="adsbygoogle"
      style="display:block"
@@ -28,6 +31,7 @@ $imageURL= $baseURL."/themes/searchview/images/";
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<?php } ?>
                                         </div>
             </div>
           </div>
@@ -35,9 +39,16 @@ $imageURL= $baseURL."/themes/searchview/images/";
         <!---right content aria -->
           <div class="col-md-9 col-sm-8 column">
             <div class=" clearfix categories">
-            <h2 class="inner-page-heading"> Search Result </h2>
+             <?php if(count($profiles)>0)
+             { ?>
+            <h2 class="inner-page-heading">Search Result for <?php if(isset($searchText)){echo $searchText ;}?></h2>
 			
                  <?= $this->render('profile-list',['profiles' => $profiles]) ?>
+             <?php }
+             else
+             {
+                 echo '<h2 class="inner-page-heading">No result Found for :'.$searchText.'</h2>';
+             }?>
         
           </div>
          

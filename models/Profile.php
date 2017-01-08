@@ -186,36 +186,36 @@ class Profile extends BaseProfile
 	}
         
     public function customSearch($q)
--    {
--            
--        $connection = \Yii::$app->db;
--        $data = $connection->createCommand("select * from profile where match(name,description,address) against ('".$q."' in boolean mode)");
--    	$data = $data->queryAll();             
--        
--        $profiledata = $connection->createCommand("select id,category_slug from category");
--    	$profiledata = $profiledata->queryAll();
--        $pdata = array();
--        foreach($profiledata as $pkey=>$pvalue)
--        {
--            $pdata[$pvalue['id']]= $pvalue['category_slug'];
--        }
--        $returnData = array();
--        
--        if(count($data)>0)
--        {
--            foreach($data as $key=>$value)
--            {
--                if(array_key_exists($value['category'], $pdata))
--                {
--                    
--                   $value['category_slug']=$pdata[$value['category']];
--                    
--                }
--             $returnData[]=$value;  
--            }
--        }        
--        return $returnData;
--    }
+{
+        
+    $connection = \Yii::$app->db;
+    $data = $connection->createCommand("select * from profile where match(name,description,address) against ('".$q."' in boolean mode)");
+	$data = $data->queryAll();             
+    
+    $profiledata = $connection->createCommand("select id,category_slug from category");
+	$profiledata = $profiledata->queryAll();
+    $pdata = array();
+    foreach($profiledata as $pkey=>$pvalue)
+    {
+        $pdata[$pvalue['id']]= $pvalue['category_slug'];
+    }
+    $returnData = array();
+    
+    if(count($data)>0)
+    {
+        foreach($data as $key=>$value)
+        {
+            if(array_key_exists($value['category'], $pdata))
+            {
+                
+               $value['category_slug']=$pdata[$value['category']];
+                
+            }
+         $returnData[]=$value;  
+        }
+    }        
+    return $returnData;
+}
         
        
      

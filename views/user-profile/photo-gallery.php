@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PhotoGallery */
@@ -75,3 +76,14 @@ $model->user_id = $user_id;
         </div>
     </div>
 </div>
+ <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'path',
+            'name',
+            'sub_tittle',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>

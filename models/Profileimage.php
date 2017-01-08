@@ -83,16 +83,16 @@ class Profileimage extends \yii\db\ActiveRecord
             Image::getImagine()->open($filePath)->thumbnail(new Box(700, 220))->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
             chmod($profile_images_path. '/thumb-'.$fileName,0777);
            
-            $res = \Yii::$app->db->createCommand()->insert('profileimage', [
+            /*$res = \Yii::$app->db->createCommand()->insert('profileimage', [
                         'user_id' => $profile_id,
                         'name' => $data['name'],
                         'path' => $fileName,
                         'heading' => $data['heading'],
                         'desc' => $data['desc'],
                         
-                    ])->execute();
+                    ])->execute();*/
 
-        return true;
+        return $fileName;
         }
         
          public function getProfileimagePathByProfileID($profileID,$size=NULL)

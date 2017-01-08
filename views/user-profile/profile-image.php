@@ -26,8 +26,14 @@ $model->user_id = $user_id;
 
                             <?= $form->field($model, 'user_id')->hiddenInput()->label(''); ?>
 
-                            <?= $form->field($model, 'path')->fileInput(array('class' => 'upload_img', 'placeholder' => 'Upload/Change Profle Photo', 'accept' => 'image/*'))->label('Upload/Change Profile Photo'); ?>
-
+                            <?= $form->field($model, 'path')->widget(FileInput::classname(),['pluginOptions' => [
+        'showPreview' => false,
+        'showCaption' => true,
+        'showRemove' => true,
+        'showUpload' => false 
+    ]] ); ?>
+                            
+                          
                             <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('Name') ?>
                             
 
@@ -38,6 +44,7 @@ $model->user_id = $user_id;
                             <?php ActiveForm::end(); ?>
 
                         </div>
+                        <div class="col-md-12" >
                         <div class="pic-thum">
                         <?php
                                 if(isset($profileImages)&& count($profileImages)>0)
@@ -53,6 +60,7 @@ $model->user_id = $user_id;
                         
                         ?>
                     </div>
+                        </div>
                     </div>
                     
                 </div>

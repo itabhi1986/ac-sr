@@ -95,6 +95,9 @@ $config = [
                           'admin/'=>'admin/default/',
                           'admin/<controller:\w+>' => 'admin/<controller>/index',
                           'admin/<controller:\w+>/<action:\w+>' => 'admin/<controller>/<action>',
+                          'merchant/'=>'merchant/default/',
+                          'merchant/<controller:\w+>' => 'merchant/<controller>/index',
+                          'merchant/<controller:\w+>/<action:\w+>' => 'merchant/<controller>/<action>',
                           'user/<controller:\w+>' => 'user/<controller>/index',
                           'user/<controller:\w+>/<action:\w+>' => 'user/<controller>/<action>',
                           '<module:user>/<controller:\w+>/<action:\w+>' => 'user/<controller>/<action>',
@@ -166,6 +169,9 @@ $config = [
                            ]
                    ],
 	    ],
+            'merchant' => [
+            'class' => 'app\modules\merchant\Module',
+        ],
     ],
 ];
 

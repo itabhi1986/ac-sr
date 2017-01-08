@@ -10,6 +10,8 @@ class User extends BaseUser
     
     public $name;
     
+    public $mobile;
+    
      public function register()
     {
 		$res = parent::register();                

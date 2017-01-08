@@ -19,7 +19,7 @@ class ProfileimageSearch extends Profileimage
     {
         return [
             [['id', 'user_id'], 'integer'],
-            [['path', 'name'], 'safe'],
+            [['path', 'name', 'heading', 'desc'], 'safe'],
         ];
     }
 
@@ -64,7 +64,9 @@ class ProfileimageSearch extends Profileimage
         ]);
 
         $query->andFilterWhere(['like', 'path', $this->path])
-            ->andFilterWhere(['like', 'name', $this->name]);
+            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'heading', $this->heading])
+            ->andFilterWhere(['like', 'desc', $this->desc]);
 
         return $dataProvider;
     }

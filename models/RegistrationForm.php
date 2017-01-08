@@ -16,6 +16,8 @@ class RegistrationForm extends BaseRegistrationForm {
      public $user;
      public $name;
      public $phone;
+     public $profile_slug;
+     public $mobile;
      
      
 
@@ -40,7 +42,9 @@ class RegistrationForm extends BaseRegistrationForm {
         $profile = \Yii::createObject(Profile::className());
         $profile->setAttributes([
             'name' => $this->name,
+            'mobile' => $this->phone,
         ]);
+        
         $user->setProfile($profile);
     }
     
@@ -50,25 +54,38 @@ class RegistrationForm extends BaseRegistrationForm {
         $rules[] = ['name', 'required'];
         $rules[] = ['name', 'string', 'max' => 255];
         $rules[] =['phone','integer'];
-         $rules[] =['phone','required'];
+        $rules[] =['phone','required'];
         return $rules;
     }
     
     public function register()
     {
+       
         if(!$this->validate())
         {
             return false;
         }
         
          $this->user->setAttributes([
-             'name'=>$this->name,
+            'name'=>$this->name,
             'email'    => $this->email,
             'username' => $this->username,
             'password' => $this->password,
             'phone'=>$this->phone
          
         ],true);
+         
+         /** @var Profile $profile */
+        $profile = \Yii::createObject(Profile::className());
+       
+        $profile->setAttributes([
+             'name' =>$this->name,
+            
+        ]);
+         
+        $this->user->setProfile($profile);
+         
+         
         return $this->user->register();
     }
     

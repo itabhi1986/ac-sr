@@ -47,7 +47,7 @@ class SecurityController extends BaseSecurityController
 			}			
 			else
 			{
-				return $this->redirect('/user-profile/index/',302);
+				return $this->redirect('/merchant/',302);
 			}
 			
         }

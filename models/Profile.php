@@ -52,7 +52,7 @@ class Profile extends BaseProfile
             'message' => 'Mobile Number should be 10 Numeric Characters.'
            
         ];
-          $rules[]= [['profile_slug'], 'string','max'=>255];
+          $rules[]= [['profile_slug'], 'string','max'=>255,'on'=>"update_slug"];
          
        
          return $rules;
@@ -91,7 +91,7 @@ class Profile extends BaseProfile
                     'zipcode' => $post_data['Profile']['zipcode'],
                      'category'=>$post_data['Profile']['category'],
                     'description' => $post_data['Profile']['description'],
-                    'profile_slug' => $slug], 'user_id =' . $profileID . '')->execute();
+                    ], 'user_id =' . $profileID . '')->execute();
            }
             else {
 
@@ -171,7 +171,7 @@ class Profile extends BaseProfile
             return false ;
         }
     
-      public function behaviors() 
+     public function behaviors() 
     {
         return [
 	               

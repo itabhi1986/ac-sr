@@ -25,6 +25,7 @@ use app\models\Profileimage;
 use app\models\Links;
 use yii\db\ActiveRecord;
 use app\models\StaffGallery;
+use yii\data\ActiveDataProvider;
 
 class UserProfileController extends Controller
 {
@@ -33,8 +34,7 @@ class UserProfileController extends Controller
     public function actionIndex()
     {
         
-       $user_id = Yii::$app->user->getId();
-       
+        $user_id = Yii::$app->user->getId();       
     	$model = "";
     	if($user_id){
 	    	 $model = Profile::findOne(['user_id' => $user_id]);
@@ -86,10 +86,14 @@ class UserProfileController extends Controller
     public function actionPhotoGallery()
     {
         $user_id = Yii::$app->user->getId();
+        
        	$model = "";
     	if($user_id){
 	    	 $model = new PhotoGallery();
                  $photoImages = PhotoGallery::getImagePathByProfileID($user_id,'thumb');
+                 $dataProvider = new ActiveDataProvider([
+                    'query' => PhotoGallery::find()->where(['user_id' => $user_id]),
+                     ]);
     	}
         
         
@@ -104,11 +108,14 @@ class UserProfileController extends Controller
                                          
                         
                     }
+                    $dataProvider = new ActiveDataProvider([
+                    'query' => PhotoGallery::find()->where(['user_id' => $user_id]),
+                     ]);
                 }
                                 
             }
             
-         return $this->render('photo-gallery',['model' => $model,'user_id'=>$user_id,'photoImages'=>$photoImages]);
+         return $this->render('photo-gallery',['model' => $model,'user_id'=>$user_id,'photoImages'=>$photoImages,'dataProvider'=>$dataProvider]);
     }
     
     public function actionGetCities()
@@ -185,7 +192,7 @@ class UserProfileController extends Controller
        	$model = "";
     	if($user_id){
 	    	 $model = new Profileimage();
-                 $profileImages = Profileimage::getProfileimagePathByProfileID($user_id);
+                 $profileImages = Profileimage::getProfileimagePathByProfileID($user_id,'thumb');
     	}      
         
         if ($model->load(Yii::$app->request->post())){

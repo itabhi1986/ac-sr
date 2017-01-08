@@ -6,7 +6,6 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Profile;
-use yii\db\Query;
 
 /**
  * ProfileSearch represents the model behind the search form about `app\models\Profile`.
@@ -20,7 +19,7 @@ class ProfileSearch extends Profile
     {
         return [
             [['user_id', 'category'], 'integer'],
-            [['name', 'public_email', 'gravatar_email', 'gravatar_id', 'location', 'website', 'bio', 'mobile', 'description', 'address', 'state', 'city', 'zipcode', 'profile_slug'], 'safe'],
+            [['name', 'public_email', 'gravatar_email', 'gravatar_id', 'location', 'website', 'bio', 'mobile', 'description', 'address', 'state', 'city', 'zipcode'], 'safe'],
         ];
     }
 
@@ -43,8 +42,7 @@ class ProfileSearch extends Profile
     public function search($params)
     {
         $query = Profile::find();
-        
-       
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -77,41 +75,8 @@ class ProfileSearch extends Profile
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'state', $this->state])
             ->andFilterWhere(['like', 'city', $this->city])
-            ->andFilterWhere(['like', 'zipcode', $this->zipcode])
-            ->andFilterWhere(['like', 'profile_slug', $this->profile_slug]);
+            ->andFilterWhere(['like', 'zipcode', $this->zipcode]);
 
         return $dataProvider;
-    }
-    
-    public function customSearch($q)
-    {
-            
-        $connection = \Yii::$app->db;
-        $data = $connection->createCommand("select * from profile where match(name,description,address) against ('".$q."' in boolean mode)");
-    	$data = $data->queryAll();             
-        
-        $profiledata = $connection->createCommand("select id,category_slug from category");
-    	$profiledata = $profiledata->queryAll();
-        $pdata = array();
-        foreach($profiledata as $pkey=>$pvalue)
-        {
-            $pdata[$pvalue['id']]= $pvalue['category_slug'];
-        }
-        $returnData = array();
-        
-        if(count($data)>0)
-        {
-            foreach($data as $key=>$value)
-            {
-                if(array_key_exists($value['category'], $pdata))
-                {
-                    
-                   $value['category_slug']=$pdata[$value['category']];
-                    
-                }
-             $returnData[]=$value;  
-            }
-        }        
-        return $returnData;
     }
 }

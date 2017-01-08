@@ -75,14 +75,14 @@ class Banner extends \yii\db\ActiveRecord
             Image::getImagine()->open($filePath)->thumbnail(new Box(700, 220))->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
             chmod($profile_images_path. '/thumb-'.$fileName,0777);
            
-            $res = \Yii::$app->db->createCommand()->insert('banner', [
+            /*$res = \Yii::$app->db->createCommand()->insert('banner', [
                         'user_id' => $profile_id,
                         'name' => $data['name'],
                         'path' => $fileName,
                         
-                    ])->execute();
+                    ])->execute();*/
 
-        return true;
+        return $fileName;
         }
         
          public function getBannerPathByProfileID($profileID,$size=NULL)
@@ -114,6 +114,37 @@ class Banner extends \yii\db\ActiveRecord
                  $imageArray[]=$profile_images_path.$value['path'];
              }
              return $imageArray;
+            
+        }
+        
+        public function getImagePathByID($profileID, $size=NULL)
+        {
+             $connection = \Yii::$app->db;
+             $data = $connection->createCommand("SELECT path,user_id from banner where id='".$profileID."'");
+             $data = $data->queryOne();
+             $profileID = $data['user_id'];
+             if($size!=NULL)
+             {
+                 
+                 if($size=="thumb")
+                 {
+                 $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/banner-image/thumb-";
+                 }
+                 if($size=="medium")
+                 {
+                 $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/banner-image/medium-";
+                 }
+                 
+             }
+            else{
+                $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/banner-image/";
+            }
+        
+             //print_r($profile_images_path);exit;
+            
+             
+             return $profile_images_path.$data['path'];
+           
             
         }
 }

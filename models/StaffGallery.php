@@ -41,7 +41,7 @@ class StaffGallery extends \yii\db\ActiveRecord
             [['user_id'], 'integer'],
             [['path'], 'string', 'max' => 255],
             [['name', 'sub_tittle'], 'string', 'max' => 100],
-            [['image'], 'file', 'extensions'=>'jpg, gif, png'],
+           // [['image'], 'file', 'extensions'=>'jpg, gif, png'],
         ];
     }
 
@@ -80,14 +80,14 @@ class StaffGallery extends \yii\db\ActiveRecord
             Image::getImagine()->open($filePath)->thumbnail(new Box(220, 220))->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
             Image::getImagine()->open($filePath)->thumbnail(new Box(500, 500))->save($profile_images_path. '/medium-'.$fileName , ['quality' => 90]);
            
-            $res = \Yii::$app->db->createCommand()->insert('staff_gallery', [
+           /* $res = \Yii::$app->db->createCommand()->insert('staff_gallery', [
                         'user_id' => $profile_id,
                         'name' => $data['name'],
                         'path' => $fileName,
                         'sub_tittle' => $data['sub_tittle']
-                    ])->execute();
+                    ])->execute();*/
 
-        return true;
+        return $fileName;
         }
 
         
@@ -120,6 +120,37 @@ class StaffGallery extends \yii\db\ActiveRecord
                  $imageArray[]=$profile_images_path.$value['path'];
              }
              return $imageArray;
+            
+        }
+        
+        public function getImagePathByID($profileID, $size=NULL)
+        {
+             $connection = \Yii::$app->db;
+             $data = $connection->createCommand("SELECT path,user_id from staff_gallery where id='".$profileID."'");
+             $data = $data->queryOne();
+             $profileID = $data['user_id'];
+             if($size!=NULL)
+             {
+                 
+                 if($size=="thumb")
+                 {
+                 $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/staff_image/thumb-";
+                 }
+                 if($size=="medium")
+                 {
+                 $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/staff_image/medium-";
+                 }
+                 
+             }
+            else{
+                $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/staff_image/";
+            }
+        
+             //print_r($profile_images_path);exit;
+            
+             
+             return $profile_images_path.$data['path'];
+           
             
         }
 }

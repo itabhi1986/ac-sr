@@ -6,518 +6,368 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\SearchviewAsset;
+use app\assets\MerchantAsset;
+use yii\bootstrap\BootstrapPluginAsset;
 
-SearchviewAsset::register($this);
-$asset = app\assets\AppAsset::register($this);
-$baseurl = $asset->baseUrl;
+
+MerchantAsset::register($this);
+BootstrapPluginAsset::register($this);
+
+
 $theme = $this->theme;
-/* echo $theme->getUrl('/images/logo.png') . "<br>";
-echo $theme->getPath('/images/logo.png');
-exit; */
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <style type="text/css">
-    :focus {
-  outline: none;
-}
-body {
-  background: #FFFFFF;
- 
-    padding-top: 0px;
-
-}
-.row {
-  margin-right: 0;
-  margin-left: 0;
-}
-.side-menu {
-  position: fixed;
-  width: 300px;
-  height: 100%;
-  background-color: #f8f8f8;
-  border-right: 1px solid #e7e7e7;
-}
-.side-menu .navbar {
-  border: none;
-}
-.side-menu .navbar-header {
-  width: 100%;
-  border-bottom: 1px solid #e7e7e7;
-}
-.side-menu .navbar-nav .active a {
-  background-color: transparent;
-  margin-right: -1px;
-  border-right: 5px solid #e7e7e7;
-}
-.side-menu .navbar-nav li {
-  display: block;
-  width: 100%;
-  border-bottom: 1px solid #e7e7e7;
-}
-.side-menu .navbar-nav li a {
-  padding: 15px;
-}
-.side-menu .navbar-nav li a .glyphicon {
-  padding-right: 10px;
-}
-.side-menu #dropdown {
-  border: 0;
-  margin-bottom: 0;
-  border-radius: 0;
-  background-color: transparent;
-  box-shadow: none;
-}
-.side-menu #dropdown .caret {
-  float: right;
-  margin: 9px 5px 0;
-}
-.side-menu #dropdown .indicator {
-  float: right;
-}
-.side-menu #dropdown > a {
-  border-bottom: 1px solid #e7e7e7;
-}
-.side-menu #dropdown .panel-body {
-  padding: 0;
-  background-color: #f3f3f3;
-}
-.side-menu #dropdown .panel-body .navbar-nav {
-  width: 100%;
-}
-.side-menu #dropdown .panel-body .navbar-nav li {
-  padding-left: 15px;
-  border-bottom: 1px solid #e7e7e7;
-}
-.side-menu #dropdown .panel-body .navbar-nav li:last-child {
-  border-bottom: none;
-}
-.side-menu #dropdown .panel-body .panel > a {
-  margin-left: -20px;
-  padding-left: 35px;
-}
-.side-menu #dropdown .panel-body .panel-body {
-  margin-left: -15px;
-}
-.side-menu #dropdown .panel-body .panel-body li {
-  padding-left: 30px;
-}
-.side-menu #dropdown .panel-body .panel-body li:last-child {
-  border-bottom: 1px solid #e7e7e7;
-}
-.side-menu #search-trigger {
-  background-color: #f3f3f3;
-  border: 0;
-  border-radius: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 15px 18px;
-}
-.side-menu .brand-name-wrapper {
-  min-height: 50px;
-}
-.side-menu .brand-name-wrapper .navbar-brand {
-  display: block;
-}
-.side-menu #search {
-  position: relative;
-  z-index: 1000;
-}
-.side-menu #search .panel-body {
-  padding: 0;
-}
-.side-menu #search .panel-body .navbar-form {
-  padding: 0;
-  padding-right: 50px;
-  width: 100%;
-  margin: 0;
-  position: relative;
-  border-top: 1px solid #e7e7e7;
-}
-.side-menu #search .panel-body .navbar-form .form-group {
-  width: 100%;
-  position: relative;
-}
-.side-menu #search .panel-body .navbar-form input {
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  width: 100%;
-  height: 50px;
-}
-.side-menu #search .panel-body .navbar-form .btn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  border: 0;
-  border-radius: 0;
-  background-color: #f3f3f3;
-  padding: 15px 18px;
-}
-/* Main body section */
-.side-body {
-  margin-left: 310px;
-}
-/* small screen */
-@media (max-width: 768px) {
-  .side-menu {
-    position: relative;
-    width: 100%;
-    height: 0;
-    border-right: 0;
-    border-bottom: 1px solid #e7e7e7;
-  }
-  .side-menu .brand-name-wrapper .navbar-brand {
-    display: inline-block;
-  }
-  /* Slide in animation */
-  @-moz-keyframes slidein {
-    0% {
-      left: -300px;
-    }
-    100% {
-      left: 10px;
-    }
-  }
-  @-webkit-keyframes slidein {
-    0% {
-      left: -300px;
-    }
-    100% {
-      left: 10px;
-    }
-  }
-  @keyframes slidein {
-    0% {
-      left: -300px;
-    }
-    100% {
-      left: 10px;
-    }
-  }
-  @-moz-keyframes slideout {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: -300px;
-    }
-  }
-  @-webkit-keyframes slideout {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: -300px;
-    }
-  }
-  @keyframes slideout {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: -300px;
-    }
-  }
-  /* Slide side menu*/
-  /* Add .absolute-wrapper.slide-in for scrollable menu -> see top comment */
-  .side-menu-container > .navbar-nav.slide-in {
-    -moz-animation: slidein 300ms forwards;
-    -o-animation: slidein 300ms forwards;
-    -webkit-animation: slidein 300ms forwards;
-    animation: slidein 300ms forwards;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  .side-menu-container > .navbar-nav {
-    /* Add position:absolute for scrollable menu -> see top comment */
-    position: fixed;
-    left: -300px;
-    width: 300px;
-    top: 43px;
-    height: 100%;
-    border-right: 1px solid #e7e7e7;
-    background-color: #f8f8f8;
-    -moz-animation: slideout 300ms forwards;
-    -o-animation: slideout 300ms forwards;
-    -webkit-animation: slideout 300ms forwards;
-    animation: slideout 300ms forwards;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  /* Uncomment for scrollable menu -> see top comment */
-  /*.absolute-wrapper{
-        width:285px;
-        -moz-animation: slideout 300ms forwards;
-        -o-animation: slideout 300ms forwards;
-        -webkit-animation: slideout 300ms forwards;
-        animation: slideout 300ms forwards;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-    }*/
-  @-moz-keyframes bodyslidein {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: 300px;
-    }
-  }
-  @-webkit-keyframes bodyslidein {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: 300px;
-    }
-  }
-  @keyframes bodyslidein {
-    0% {
-      left: 0;
-    }
-    100% {
-      left: 300px;
-    }
-  }
-  @-moz-keyframes bodyslideout {
-    0% {
-      left: 300px;
-    }
-    100% {
-      left: 0;
-    }
-  }
-  @-webkit-keyframes bodyslideout {
-    0% {
-      left: 300px;
-    }
-    100% {
-      left: 0;
-    }
-  }
-  @keyframes bodyslideout {
-    0% {
-      left: 300px;
-    }
-    100% {
-      left: 0;
-    }
-  }
-  /* Slide side body*/
-  .side-body {
-    margin-left: 5px;
-    margin-top: 70px;
-    position: relative;
-    -moz-animation: bodyslideout 300ms forwards;
-    -o-animation: bodyslideout 300ms forwards;
-    -webkit-animation: bodyslideout 300ms forwards;
-    animation: bodyslideout 300ms forwards;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  .body-slide-in {
-    -moz-animation: bodyslidein 300ms forwards;
-    -o-animation: bodyslidein 300ms forwards;
-    -webkit-animation: bodyslidein 300ms forwards;
-    animation: bodyslidein 300ms forwards;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-  }
-  /* Hamburger */
-  .navbar-toggle {
-    border: 0;
-    float: left;
-    padding: 18px;
-    margin: 0;
-    border-radius: 0;
-    background-color: #f3f3f3;
-  }
-  /* Search */
-  #search .panel-body .navbar-form {
-    border-bottom: 0;
-  }
-  #search .panel-body .navbar-form .form-group {
-    margin: 0;
-  }
-  .navbar-header {
-    /* this is probably redundant */
-    position: fixed;
-    z-index: 3;
-    background-color: #f8f8f8;
-  }
-  /* Dropdown tweek */
-  #dropdown .panel-body .navbar-nav {
-    margin: 0;
-  }
-}
-    </style>
+    
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-<div class="row">
-    <!-- uncomment code for absolute positioning tweek see top comment in css -->
-    <!-- <div class="absolute-wrapper"> </div> -->
-    <!-- Menu -->
-    <div class="side-menu">
-    
-    <nav class="navbar navbar-default" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <div class="brand-wrapper">
-            <!-- Hamburger -->
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Brand -->
-            <div class="brand-name-wrapper">
-                <a class="navbar-brand" href="/admin">
-                    <center>Dashboard</center>
-                </a>
-            </div>
-            
-            <a href="/" target="_blank" class="btn btn-default" id="search-trigger">
-                <span class="glyphicon glyphicon-new-window"></span>
+    <div class="wrapper">
+      <!-- BEGIN SIDEBAR-->
+ <aside class="social-sidebar">
+        <?php $this->beginContent('@app/modules/merchant/views/layouts/sidebar.php'); ?>
+        <?php $this->endContent(); ?>
+        
+      </aside>
+      <!-- END SIDEBAR-->
+      <header>
+        <!-- BEGIN NAVBAR-->
+        <nav role="navigation" class="navbar navbar-fixed-top navbar-super social-navbar">
+          <div class="navbar-header">
+            <a href="#home" title="Social" class="navbar-brand">              
+              <span>&nbsp;User Section</span>
             </a>
-
-            <!-- Search -->
-            <!-- <a data-toggle="collapse" href="#search" class="btn btn-default" id="search-trigger">
-                <span class="glyphicon glyphicon-search"></span>
-            </a> -->
-
-            <!-- Search body -->
-            <div id="search" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <form class="navbar-form" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <div class="navbar-toggle"><i class="fa fa-align-justify"></i>
+          </div>
+          <div>
+            <ul class="nav navbar-nav">
+              <li class="dropdown navbar-super-fw hidden-xs">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Mega Menu<b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="alert alert-warning alert-dismissable">
+                          <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button><strong>Warning!</strong>Better check yourself, you're not looking too good.
                         </div>
-                        <button type="submit" class="btn btn-default "><span class="glyphicon glyphicon-ok"></span></button>
-                    </form>
-                </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="btn-icon col-md-3">
+                        <a href="#" role="button" class="btn btn-neutral"><i class="fa fa-dashboard fa-lg"></i>
+                          <div class="title">Dashboard</div>
+                          <span class="label label-warning">2</span>
+                        </a>
+                      </div>
+                      <div class="btn-icon col-md-3">
+                        <a href="#" role="button" class="btn btn-primary"><i class="fa fa-calendar fa-lg"></i>
+                          <div class="title">Calendar</div>
+                          <span class="label label-danger">4</span>
+                        </a>
+                      </div>
+                      <div class="btn-icon col-md-3">
+                        <a href="#" role="button" class="btn btn-danger"><i class="fa fa-inbox fa-lg"></i>
+                          <div class="title">Inbox</div>
+                          <span class="label label-success">2</span>
+                        </a>
+                      </div>
+                      <div class="btn-icon col-md-3">
+                        <a href="#" role="button" class="btn btn-success"><i class="fa fa-money fa-lg"></i>
+                          <div class="title">Finances</div>
+                          <span class="label label-primary">256$</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="media well">
+                          <a href="#" class="pull-left">
+                            <img src="../../assets/img/avatars/user1_55.jpg" style="width: 55px; height: 55px;" alt="User" class="media-object">
+                          </a>
+                          <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="panel panel-default">
+                          <!-- Table-->
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <!-- END DROPDOWN MESSAGES-->
+              <li class="divider-vertical"></li>
+              <!-- BEGIN EXTRA DROPDOWN-->
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="0" class="dropdown-toggle"><i class="fa fa-caret-down fa-lg"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#"><i class="fa fa-user"></i>&nbsp;My Profile</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-cogs"></i>&nbsp;Settings</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#"><i class="fa fa-info"></i>&nbsp;Help</a>
+                  </li>
+                </ul>
+              </li>
+              <!-- END EXTRA DROPDOWN-->
+            </ul>
+            <div class="nav-indicators">
+              <ul class="nav navbar-nav navbar-right nav-indicators-body">
+                <!-- BEGIN DROPDOWN NOTIFICATIONS-->
+                <li class="dropdown nav-notifications">
+                  <!-- BEGIN DROPDOWN TOGGLE-->
+                  <a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="0" class="dropdown-toggle">
+                    <span class="badge">9</span><i class="fa fa-warning fa-lg"></i>
+                  </a>
+                  <!-- END DROPDOWN TOGGLE-->
+                  <!-- BEGIN DROPDOWN MENU-->
+                  <ul class="dropdown-menu">
+                    <!-- BEGIN DROPDOWN HEADER-->
+                    <li class="nav-notifications-header">
+                      <a tabindex="-1" href="#">You have <strong>9</strong> new notifications</a>
+                    </li>
+                    <!-- END DROPDOWN HEADER-->
+                    <!-- BEGIN NOTIFICATION ITEMS-->
+                    <li class="nav-notifications-body">
+                      <a href="#" class="text-info"><i class="fa fa-user"></i>&nbsp;New User
+                        <small class="pull-right">Just Now</small>
+                      </a>
+                      <a href="#" class="text-danger"><i class="fa fa-user"></i>&nbsp;User Deleted
+                        <small class="pull-right">Just Now</small>
+                      </a>
+                      <a href="#" class="text-warning"><i class="fa fa-cogs"></i>&nbsp;Sever is overloaded
+                        <small class="pull-right">2 minutes ago</small>
+                      </a>
+                      <a href="#"><i class="fa fa-briefcase"></i>&nbsp;Backup is completed
+                        <small class="pull-right">4 minutes ago</small>
+                      </a>
+                      <a href="#" class="text-info"><i class="fa fa-user"></i>&nbsp;New User
+                        <small class="pull-right">Just Now</small>
+                      </a>
+                      <a href="#" class="text-danger"><i class="fa fa-user"></i>&nbsp;User Deleted
+                        <small class="pull-right">Just Now</small>
+                      </a>
+                      <a href="#" class="text-warning"><i class="fa fa-cogs"></i>&nbsp;Sever is overloaded
+                        <small class="pull-right">3 minutes ago</small>
+                      </a>
+                      <a href="#"><i class="fa fa-briefcase"></i>&nbsp;Backup is completed
+                        <small class="pull-right">6 minutes ago</small>
+                      </a>
+                    </li>
+                    <!-- END NOTIFICATION ITEMS-->
+                    <!-- BEGIN DROPDOWN FOOTER-->
+                    <li class="nav-notifications-footer">
+                      <a href="#">View all messages</a>
+                    </li>
+                    <!-- END DROPDOWN FOOTER-->
+                  </ul>
+                  <!-- END DROPDOWN MENU-->
+                </li>
+                <!-- END DROPDOWN NOTIFICATIONS-->
+                <!-- BEGIN DROPDOWN TASKS-->
+                <li class="dropdown nav-tasks">
+                  <!-- BEGIN DROPDOWN TOGGLE-->
+                  <a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="0" class="dropdown-toggle">
+                    <span class="badge">13</span><i class="fa fa-tasks fa-lg"></i>
+                  </a>
+                  <!-- END DROPDOWN TOGGLE-->
+                  <!-- BEGIN DROPDOWN MENU-->
+                  <ul class="dropdown-menu">
+                    <!-- BEGIN DROPDOWN HEADER-->
+                    <li class="nav-tasks-header">
+                      <a href="#">You have <strong>13</strong> tasks in progress</a>
+                    </li>
+                    <!-- END DROPDOWN HEADER-->
+                    <!-- BEGIN DROPDOWN ITEMS-->
+                    <li class="nav-tasks-body">
+                      <a>Prepare Report
+                        <span class="pull-right">30%</span>
+                        <div class="progress">
+                          <div role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%" class="progress-bar progress-bar-danger">
+                            <span class="sr-only">30% Complete</span>
+                          </div>
+                        </div>
+                      </a>
+                      <a>Make new update
+                        <span class="pull-right">40%</span>
+                        <div class="progress">
+                          <div role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%" class="progress-bar progress-bar-info">
+                            <span class="sr-only">40% Complete</span>
+                          </div>
+                        </div>
+                      </a>
+                      <a>Fix critical bugs
+                        <span class="pull-right">80%</span>
+                        <div class="progress progress-striped active">
+                          <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%" class="progress-bar">
+                            <span class="sr-only">80% Complete</span>
+                          </div>
+                        </div>
+                      </a>
+                      <a>Complete project
+                        <span class="pull-right">5%</span>
+                        <div class="progress">
+                          <div role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%" class="progress-bar progress-bar-success">
+                            <span class="sr-only">5% Complete (success)</span>
+                          </div>
+                        </div>
+                      </a>
+                      <a>Others
+                        <span class="pull-right">15%</span>
+                        <div class="progress">
+                          <div role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%" class="progress-bar progress-bar-warning">
+                            <span class="sr-only">15% Complete (warning)</span>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <!-- END DROPDOWN ITEMS-->
+                    <!-- BEGIN DROPDOWN FOOTER-->
+                    <li class="nav-tasks-footer">
+                      <a href="#">View all tasks</a>
+                    </li>
+                    <!-- END DROPDOWN FOOTER-->
+                  </ul>
+                  <!-- END DROPDOWN MENU-->
+                </li>
+                <!-- END DROPDOWN TASKS-->
+                <!-- BEGIN DROPDOWN MESSAGES-->
+                <li class="dropdown nav-messages">
+                  <!-- BEGIN DROPDOWN TOGGLE-->
+                  <a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="0" class="dropdown-toggle">
+                    <span class="badge">8</span><i class="fa fa-envelope fa-lg"></i>
+                  </a>
+                  <!-- END DROPDOWN TOGGLE-->
+                  <!-- BEGIN DROPDOWN MENU-->
+                  <ul class="dropdown-menu">
+                    <!-- BEGIN DROPDOWN HEADER-->
+                    <li class="nav-messages-header">
+                      <a tabindex="-1" href="#">You have <strong>8</strong> new messages</a>
+                    </li>
+                    <!-- END DROPDOWN HEADER-->
+                    <!-- BEGIN DROPDOWN ITEMS-->
+                    <li class="nav-messages-body">
+                      <a>
+                        <img src="../../assets/img/avatars/user1_55.jpg" alt="User" class="avatar">
+                        <div class="title">
+                          <small class="pull-right">Just Now</small><strong>Yadra Abels</strong>
+                        </div>
+                        <div class="message">Lorem ipsum dolor sit amet, consectetur...</div>
+                      </a>
+                      <a>
+                        <img src="../../assets/img/avatars/user2_55.jpg" alt="User" class="avatar">
+                        <div class="title">
+                          <small class="pull-right">Just Now</small><strong>Cesar Mendoza</strong>
+                        </div>
+                        <div class="message">Lorem ipsum dolor sit amet, consectetur...</div>
+                      </a>
+                      <a>
+                        <img src="../../assets/img/avatars/user3_55.jpg" alt="User" class="avatar">
+                        <div class="title">
+                          <small class="pull-right">Just Now</small><strong>John Doe</strong>
+                        </div>
+                        <div class="message">Lorem ipsum dolor sit amet, consectetur...</div>
+                      </a>
+                      <a>
+                        <img src="../../assets/img/avatars/user4_55.jpg" alt="User" class="avatar">
+                        <div class="title">
+                          <small class="pull-right">Just Now</small><strong>Tobei Tsumura</strong>
+                        </div>
+                        <div class="message">Lorem ipsum dolor sit amet, consectetur...</div>
+                      </a>
+                    </li>
+                    <!-- END DROPDOWN ITEMS-->
+                    <!-- BEGIN DROPDOWN FOOTER-->
+                    <li class="nav-messages-footer">
+                      <a tabindex="-1" href="#">View all messages</a>
+                    </li>
+                    <!-- END DROPDOWN FOOTER-->
+                  </ul>
+                  <!-- END DROPDOWN MENU-->
+                </li>
+              </ul>
             </div>
+          </div>
+          <!-- /.navbar-collapse-->
+        </nav>
+        <!-- END NAVBAR-->
+      </header>
+      <div class="main">
+        <!-- BEGIN CONTENT-->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="page-title">Dashboard</h3>
+              <ul class="breadcrumb breadcrumb-arrows breadcrumb-default">
+                <li>
+                  <a href="#ignore"><i class="fa fa-home fa-lg"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-
-    </div>
-
-    <!-- Main Menu -->
-    <div class="side-menu-container">
-        <ul class="nav navbar-nav">     
-            <!-- Dropdown-->
-            <li class="panel panel-default" id="dropdown">
-                <a data-toggle="collapse" href="#dropdown-lvl2">
-                    <span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
-                </a>
-                <!-- Dropdown level 1 -->
-                <div id="dropdown-lvl2" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/user/admin/">All Users</a></li>
-                            <li><a href="/user/admin/create/">Add New User</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-            <li class="panel panel-default" id="dropdown">
-                <a data-toggle="collapse" href="#dropdown-lvl3">
-                    <span class="glyphicon glyphicon-user"></span> Categories <span class="caret"></span>
-                </a>
-                <!-- Dropdown level 1 -->
-                <div id="dropdown-lvl3" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/admin/category/">Categories Lists</a></li>
-                            <li><a href="/admin/category/create/">Add New Category</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>   
-            <li class="panel panel-default" id="dropdown">
-                <a data-toggle="collapse" href="#dropdown-lvl4">
-                    <span class="glyphicon glyphicon-user"></span> Banner <span class="caret"></span>
-                </a>
-                <!-- Dropdown level 1 -->
-                <div id="dropdown-lvl4" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/admin/banner/">Banner Lists</a></li>
-                            <li><a href="/admin/banner/create/">Add New Banner</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>   
-            
-
-            
-            <li> <?php  $url = Html::a('<span class="glyphicon glyphicon-log-out"></span> Logout',
-                        ['//user/security/logout/'],
-                        ['class' => '', 'data-method'=>'post']);
-                        echo $url;
-                
-                        ?></li>
-            
-
-        </ul>
-    </div><!-- /.navbar-collapse -->
-</nav>
-    
-    </div>
-
-    <!-- Main Content -->
-    <div class="container-fluid">
-        <div class="side-body">
-           <h1> Dashboard </h1>
-           <?= Breadcrumbs::widget([
-	            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-           		'homeLink' => ['label' => Yii::t('yii', 'Home'),
-                'url' => "/admin/"]
-	        ]) ?>
-           <?= $content ?>
-         
+        <div class="container">
+          <?= $content ?>
         </div>
+        <!-- END CONTENT-->
+      </div>
+      <footer>2016 © Search2city.com </footer>
     </div>
-</div>
+   
 
 <?php $this->endBody() ?>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    
-
-	<script type="text/javascript">
-	$(function () {
-    $('.navbar-toggle').click(function () {
-        $('.navbar-nav').toggleClass('slide-in');
-        $('.side-body').toggleClass('body-slide-in');
-        $('#search').removeClass('in').addClass('collapse').slideUp(200);
-
-        /// uncomment code for absolute positioning tweek see top comment in css
-        //$('.absolute-wrapper').toggleClass('slide-in');
-        
-    });
-   
-   // Remove menu for searching
-   $('#search-trigger').click(function () {
-        $('.navbar-nav').removeClass('slide-in');
-        $('.side-body').removeClass('body-slide-in');
-
-        /// uncomment code for absolute positioning tweek see top comment in css
-        //$('.absolute-wrapper').removeClass('slide-in');
-
-    });
-});
-	</script>
 </body>
 </html>
 <?php $this->endPage() ?>

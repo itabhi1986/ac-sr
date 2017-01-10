@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\PhotoGallery;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PhotoGallery */
@@ -34,8 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             array(
                 'attribute'=>'path',
             'format' => 'html',
-                'value'=>function($data) {             
-             return Html::img($data->getImagePathByID($data['id']),['width' => '70px']);},
+                'value'=>Html::img(PhotoGallery::getImagePathByID($model->id),['width' => '70px']),
                  
                 ),
             'name',

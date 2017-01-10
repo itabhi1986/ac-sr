@@ -31,7 +31,9 @@ $categoriesData = ArrayHelper::map($categories, 'id', 'name');
 
 <div class="profile-form">
 
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin([
+        'enableAjaxValidation'=>true,
+    ]); ?>
 
     <?= $form->field($model, 'user_id')->hiddenInput(['value'=>Yii::$app->user->getId()]); ?>
     <?= $form->field($model, 'profile_slug')->textInput(array('value'=>$model->getAttribute('profile_slug'))) ?>

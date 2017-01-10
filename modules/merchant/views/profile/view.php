@@ -18,16 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Update', ['update'], ['class' => 'btn btn-primary']) ?>
        
     </p>
+    <?php print_r($model->getAttribute('city')); ?>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'user_id',
             'name',
-            'public_email:email',
-            'gravatar_email:email',
-            'gravatar_id',
-            'location',
+            'public_email:email',            
             'website',
             'bio:ntext',
             'mobile',

@@ -88,7 +88,13 @@ use yii\helpers\Html;
                         <!-- icon--><i class="fa fa-user"></i>
                         <span>Update Profile</span>
                     </a>
-                </li>                
+                </li>
+                <li>
+                    <a href="/merchant/profile/slug/" >
+                        <!-- icon--><i class="fa fa-user"></i>
+                        <span>Update Slug</span>
+                    </a>
+                </li> 
                
                 <!-- END ELEMENT MENU-->
                               

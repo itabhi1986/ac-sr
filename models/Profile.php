@@ -29,32 +29,29 @@ use yii\behaviors\SluggableBehavior;
 class Profile extends BaseProfile
 {
     
-    public $description;
-    public $mobile;
-    public $address;
-    public $state;
-    public $city;
-    public $zipcode;
-    public $category;
-    public $profile_slug;
-    public $timezone;
     
     
     public function rules()
-    {
-        
-        
+    {        
          $rules = parent::rules();
         
-         $rules[]=[['name','public_email','description','mobile','address','state','city','zipcode','category'],'required'];
+         $rules[]=[['name','public_email','description','mobile','address','state','city','zipcode','category'],'required','on'=>"update_profile"];
          $rules[]=['mobile', 'match', 'not' => false,
             'pattern' => '/^[0-9]{10}$/',
             'message' => 'Mobile Number should be 10 Numeric Characters.'
            
         ];
-          $rules[]= [['profile_slug'], 'string','max'=>255,'on'=>"update_slug"];
+         $rules[]=['profile_slug', 'match', 'not' => false,
+            'pattern' => '/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
+            'message' => 'Alphabets, numbers and hypen(-) is allowed. Slug Can be created like this  e.g contact-us about-us govt-senior-school','on'=>'update_slug'
+           
+        ];
          
-       
+         $rules[]=['profile_slug', 'unique', 'message' => 'Profile Slug already taken. Try with some other.','on'=>'update_slug'];
+          
+         
+         $rules[]=[['profile_slug'],'required','on'=>'update_slug'];
+         $rules[]=['profile_slug','safe'];
          return $rules;
          
     }
@@ -216,6 +213,18 @@ class Profile extends BaseProfile
     }        
     return $returnData;
 }
+      
+
+ public function saveProfileSlug($post_data){  
+            
+           
+                     $res_count = \Yii::$app->db->createCommand()->update('profile', [
+                   
+                    'profile_slug' => $post_data['Profile']['profile_slug'],
+                    ], 'user_id =' . $post_data['Profile']['user_id'] . '')->execute();
+          
+            return $res_count;
+        }
         
        
      

@@ -31,7 +31,7 @@ use yii\bootstrap\NavBar;
                             ['label' => 'Contact Us', 'url' => ['/site/contact-us']],
                             ['label' => 'Register', 'url' => ['/user/register'],'visible' => Yii::$app->user->isGuest],
                             ['label' => 'Login', 'url' => ['/user/login'],'visible' => Yii::$app->user->isGuest],
-                            ['label' => '(' .Yii::$app->user->identity->username.')', 'url' => ['#'], 'visible' => !Yii::$app->user->isGuest
+                            ['label' => (!Yii::$app->user->isGuest)? Yii::$app->user->identity->username:'', 'url' => ['#'], 'visible' => !Yii::$app->user->isGuest
                             ,'items' => [
                                         ['label' => 'Dashboard', 'url' => ['/merchant/index/'],'visible' => !Yii::$app->user->isGuest],
                                         ['label' => 'Log out (' . (Yii::$app->user->isGuest)?'Logout':'' . ')', 'url' => ['/user/security/logout/'], 'linkOptions' => ['data-method' => 'post'],'visible' => !Yii::$app->user->isGuest]

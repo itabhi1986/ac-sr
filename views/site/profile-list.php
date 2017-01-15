@@ -16,9 +16,7 @@ $imageURL= $baseURL."/themes/searchview/images/";
      {
          $imagepath = $imageURL.'contactus.jpg';
      }
- else {
-          $imagepath = $imagepath;
-     }
+ 
         echo '<div class=" categories">
         <div class="clearfix ">
         <div class="col-md-3 col-sm-4 col-xs-4 clsmd3 full-width"><img src='.$imagepath.'> </div>

@@ -149,10 +149,7 @@ use yii\helpers\Html;
                     </ul>
                 </li>
                 
-                <li>
-                    <a data-toggle="collapse" data-parent="#social-pagesidebar-menu" href="#menu-pages-sidebar"><i class="fa fa-picture-o"></i>
-                        <span>Profile Image</span><i class="fa arrow"></i>
-                    </a>                    
+                <li><?php echo  Html::a("Profile Image", Url::home() . "merchant/profileimage/index/");?></li>                  
                 </li>
                 <li class="active"><?php echo  Html::a('<span class="glyphicon glyphicon-log-out"></span> Logout ', ['/user/logout'], ['data-method' => 'post'])?> </li>
                 <!-- END ELEMENT MENU-->

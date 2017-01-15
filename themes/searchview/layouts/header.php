@@ -50,7 +50,7 @@ use yii\bootstrap\NavBar;
                             ['label' => 'Login', 'url' => ['/user/login'],'visible' => Yii::$app->user->isGuest],
                             ['label' => (!Yii::$app->user->isGuest)? Yii::$app->user->identity->username:'', 'url' => ['#'], 'visible' => !Yii::$app->user->isGuest
                             ,'items' => [
-                                        ['label' => 'Dashboard', 'url' => ['/merchant/index/'],'visible' => !Yii::$app->user->isGuest],
+                                        ['label' => 'Dashboard', 'url' => ['/merchant/'],'visible' => !Yii::$app->user->isGuest],
                                         ['label' => 'Log out (' . (Yii::$app->user->isGuest)?'Logout':'' . ')', 'url' => ['/user/security/logout/'], 'linkOptions' => ['data-method' => 'post'],'visible' => !Yii::$app->user->isGuest]
                             ]]]
                             

@@ -18,7 +18,7 @@ $imageURL= $baseURL."/themes/searchview/images/";
          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 column column ">
             <div class="row clearfix mT60 ">
                <div class="addbanner">
-                         <img src="<?php echo $imageURL."aboutus.jpg"?>">
+                         <!--<img src="<?php echo $imageURL."aboutus.jpg"?>">-->
          <?php if(YII_ENV_PROD)
 {?>
          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

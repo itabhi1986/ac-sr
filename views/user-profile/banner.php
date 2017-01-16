@@ -21,7 +21,7 @@ $model->user_id = $user_id;
                 <!---right content aria -->
                 <div class="col-md-9 col-sm-8 column bg-wht">
                     <div class="row clearfix categories">
-                    <h2> Uplade Banner</h2>
+                    <h2> Upload Banner</h2>
                         <div class="photo-gallery-form">
                             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 

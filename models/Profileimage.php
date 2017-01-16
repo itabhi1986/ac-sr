@@ -3,10 +3,12 @@
 namespace app\models;
 
 use Yii;
+use dosamigos\fileupload\FileUpload;
 use yii\imagine\Image;
 use Imagine\Gd;
 use Imagine\Image\Box;
 use Imagine\Image\BoxInterface;
+use yii\db\Query;
 
 /**
  * This is the model class for table "profileimage".

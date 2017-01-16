@@ -12,6 +12,7 @@ use \app\models\PhotoGallery;
 use app\models\Profileimage;
 use app\models\Links;
 use yii\helpers\Url;
+use app\models\StaffGallery;
 $baseURL = Url::base(true);
 $imageURL= $baseURL."/themes/searchview/images/"; 
 ?>
@@ -91,7 +92,7 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                      <div class="gallery mT60" id="photo-gallery">
                                     <h2>Photo gallery</h2>
                                     <div class=" clearfix" >
-                                        <?php $profileImages = PhotoGallery::getImagePathByProfileID($profile['user_id'],"thumb");
+                                        <?php $profileImages = StaffGallery::getImagePathByProfileID($profile['user_id'],"thumb");
                                         foreach($profileImages as $pk=>$pv)
                                         {
                                             echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <img src="'.$pv.'" alt=""> </div>';

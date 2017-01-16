@@ -11,7 +11,7 @@ $baseURL = Url::base(true);
 $imageURL= $baseURL."/themes/searchview/images/";
     foreach($profiles as $key=>$value)
     {
-     $imagepath =  Banner::getImagePathByID($value['id'],'thumb');
+     $imagepath =  Banner::getImagePathByID($value['user_id'],'thumb');
      if($imagepath=='')
      {
          $imagepath = $imageURL.'contactus.jpg';

@@ -120,9 +120,9 @@ class Banner extends \yii\db\ActiveRecord
         public function getImagePathByID($profileID, $size=NULL)
         {
              $connection = \Yii::$app->db;
-             $data = $connection->createCommand("SELECT path,user_id from banner where id='".$profileID."'order by id desc ");
+             $data = $connection->createCommand("SELECT path from banner where user_id='".$profileID."'order by id desc ");
              $data = $data->queryOne();
-             $profileID = $data['user_id'];
+             
              if($size!=NULL)
              {
                  

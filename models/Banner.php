@@ -35,7 +35,7 @@ class Banner extends \yii\db\ActiveRecord
         return [
             [['user_id', 'path'], 'required'],
             [['user_id'], 'integer'],
-            [['path'], 'string', 'max' => 255],
+            //[['path'], 'string', 'max' => 255],
             [['name'], 'string', 'max' => 100],
         ];
     }
@@ -72,7 +72,7 @@ class Banner extends \yii\db\ActiveRecord
             $filePath = $profile_images_path . '/' . $fileName;
             $this->bannerImage->saveAs($filePath);
             chmod($filePath,0777);
-            Image::getImagine()->open($filePath)->thumbnail(new Box(700, 220))->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
+            Image::getImagine()->open($filePath)->thumbnail(new Box(1100, 300))->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
             chmod($profile_images_path. '/thumb-'.$fileName,0777);
            
             /*$res = \Yii::$app->db->createCommand()->insert('banner', [

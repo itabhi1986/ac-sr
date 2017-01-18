@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use Yii;
+use kartik\file\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Banner */
@@ -11,11 +12,36 @@ use Yii;
 
 <div class="banner-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+    'options'=>['enctype'=>'multipart/form-data'] // important
+]); ?>
 
     <?= $form->field($model, 'user_id')->hiddenInput(['value'=> Yii::$app->user->getId()])->label(false); ?>
 
-    <?= $form->field($model, 'path')->fileInput() ?>
+    <?= $form->field($model, 'path')->widget(FileInput::classname(), [
+							    'options' => ['class' =>'','accept' => 'image/*'],
+								'pluginOptions' => [
+									'allowedFileExtensions'=>['jpg','gif','png'],
+								    //'showPreview' => false,
+									'showUpload' => false,
+									'showCaption' => false,
+									'showRemove'=> false,
+									//'browseClass' => 'input-group-lg',
+									'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+									'browseLabel' =>  'Upload/ChangePhoto',
+									'minFileSize'=>10,  //100kb
+									'maxFileSize'=>2048,  //2mb  
+									'minImageWidth'=> 1200,
+									'minImageHeight'=> 300,
+									//'resizeImage'=> true,
+								    //'maxImageWidth'=> 1000, 
+									//'maxImageHeight'=> 1095,
+								    //'resizePreference'=> 'width',
+									'previewFileType' => 'image',
+									
+								],
+								
+							]);?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

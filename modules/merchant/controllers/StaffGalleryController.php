@@ -95,8 +95,9 @@ class StaffGalleryController extends Controller
                               
                       
                     }
+                     return $this->redirect(['view', 'id' => $model->id]);
             }
-            return $this->redirect(['view', 'id' => $model->id]);
+           
         } else {
             return $this->render('create', [
                 'model' => $model,

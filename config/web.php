@@ -56,7 +56,9 @@ $config = [
 	        		'<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 	        ), */
 		'rules' => [
-			'' => '/site/index', 
+                      '/site/captcha/'=>'/site/captcha/',
+			'' => '/site/index',
+                      
                         '/search/'=>'/site/search-profile/',
                         'logout/'=> 'site/logout/',
                         'user/logout/'=> 'user/security/logout/',

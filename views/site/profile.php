@@ -28,12 +28,12 @@ $imageURL= $baseURL."/themes/searchview/images/";
                     <div class=" clearfix">
                         <div class="col-md-12">
                             <ul class="breadcrumb breadcrumb_new">
-                                <li> <a href="#profile-home">Home</a></li>
-                                <li> <a href="#about-us">About us</a></li>
-                                <li> <a href="#staff">Staff</a> </li> 
-                                <li> <a href="#photo-gallery">Photo Gallery</a>  </li>
-                                <li> <a href="#contact-us">Contact us</a></li>
-                                <li> <a href="#important-links">Important Links</a></li>                                
+                                <li> <a href="#profile-home">HOME</a></li>
+                                <li> <a href="#about-us">ABOUT US</a></li>
+                                <li> <a href="#staff">STAFF</a> </li> 
+                                <li> <a href="#photo-gallery">PHOTO GALLERY</a>  </li>
+                                <li> <a href="#contact-us">CONTACT US</a></li>
+                                <li> <a href="#important-links">IMPORTANT LINKS</a></li>                                
                             </ul>
                         </div>
                     </div>
@@ -80,7 +80,7 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                             <div class="gallery mT60" id="staff">
                                     <h2>Staff Details</h2>
                                     <div class=" clearfix" >
-                                        <?php $profileImages = PhotoGallery::getImagePathByProfileID($profile['user_id'],"thumb");
+                                        <?php $profileImages = StaffGallery::getImagePathByProfileID($profile['user_id'],"medium");
                                         foreach($profileImages as $pk=>$pv)
                                         {
                                             echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <img src="'.$pv.'" alt=""> </div>';
@@ -92,7 +92,7 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                      <div class="gallery mT60" id="photo-gallery">
                                     <h2>Photo gallery</h2>
                                     <div class=" clearfix" >
-                                        <?php $profileImages = StaffGallery::getImagePathByProfileID($profile['user_id'],"thumb");
+                                        <?php $profileImages = PhotoGallery::getImagePathByProfileID($profile['user_id'],"medium");
                                         foreach($profileImages as $pk=>$pv)
                                         {
                                             echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <img src="'.$pv.'" alt=""> </div>';

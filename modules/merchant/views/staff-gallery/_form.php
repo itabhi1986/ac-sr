@@ -18,7 +18,9 @@ use kartik\file\FileInput;
 
      <?= $form->field($model, 'user_id')->hiddenInput(['value'=> Yii::$app->user->getId()])->label(false); ?>
 
-    <?= $form->field($model, 'path')->widget(FileInput::classname(), [
+    <?php if($model->path=='')
+{
+    echo	 $form->field($model, 'path')->widget(FileInput::classname(), [
 							    'options' => ['class' =>'','accept' => 'image/*'],
 								'pluginOptions' => [
 									'allowedFileExtensions'=>['jpg','gif','png','jpeg'],
@@ -41,7 +43,7 @@ use kartik\file\FileInput;
 									
 								],
 								
-							]);?>
+]); } ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

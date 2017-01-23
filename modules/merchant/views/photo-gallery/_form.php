@@ -8,6 +8,7 @@ use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\PhotoGallery */
 /* @var $form yii\widgets\ActiveForm */
+//print_r($model->path);exit;
 ?>
 
 <div class="photo-gallery-form">
@@ -17,10 +18,12 @@ use kartik\file\FileInput;
 ]); ?>    
     
     <?= $form->field($model, 'user_id')->hiddenInput(['value'=> Yii::$app->user->getId()])->label(false); ?>
-
-    <?= $form->field($model, 'path')->widget(FileInput::classname(), [
-							    'options' => ['class' =>'','accept' => 'image/*'],
+<?php if($model->path=='')
+{
+    echo $form->field($model, 'path')->widget(FileInput::classname(), [
+							    'options' => ['class' =>'','accept' => 'image/*','value'=>$model->path,'multiple'=>false],
 								'pluginOptions' => [
+        
 									'allowedFileExtensions'=>['jpg','gif','png','jpeg'],
 								    //'showPreview' => false,
 									'showUpload' => false,
@@ -37,11 +40,14 @@ use kartik\file\FileInput;
 								    //'maxImageWidth'=> 1000, 
 									//'maxImageHeight'=> 1095,
 								    //'resizePreference'=> 'width',
+                                                                       // 'overwriteInitial'=>false,
 									'previewFileType' => 'image',
+                                                                         
 									
 								],
 								
-							]);?>
+							])->label("Gallery Image");
+    } ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

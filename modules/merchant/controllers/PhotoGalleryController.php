@@ -115,14 +115,36 @@ class PhotoGalleryController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $image = UploadedFile::getInstance($model, 'path');
+            $user_id = Yii::$app->user->getId();
+            
+            if (isset($image) && !empty($image)) {
+                
+                $img_res = $model->saveImages($user_id, $image,Yii::$app->request->post());
+                    if($img_res)
+                    {
+                        $model->path= $img_res;
+                        $model->save();
+                        
+                              
+                      
+                    }
             return $this->redirect(['view', 'id' => $model->id]);
+            }
+        else {
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+     
+        }
         } else {
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
     }
+    
 
     /**
      * Deletes an existing PhotoGallery model.

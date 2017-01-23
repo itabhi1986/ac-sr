@@ -7,6 +7,7 @@ use app\models\Banner;
  * and open the template in the editor.
  */
 use yii\helpers\Url;
+use app\models\Cities;
 $baseURL = Url::base(true);
 $imageURL= $baseURL."/themes/searchview/images/";
     foreach($profiles as $key=>$value)
@@ -27,7 +28,7 @@ $imageURL= $baseURL."/themes/searchview/images/";
                echo '<br>
             <span class="customer_name"><strong> State: </strong>'.(States::getStateByID($value['state'])).'</span>
                 <br>
-            <span class="customer_name"><strong> City: </strong>'.$value['city'].'</span>
+            <span class="customer_name"><strong> City: </strong>'.Cities::getCityByID($value['city']).'</span>
                 <br>
             <span class="customer_name"><strong> Zipcode: </strong>'.$value['zipcode'].'</span>
                 

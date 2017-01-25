@@ -77,8 +77,8 @@ class StaffGallery extends \yii\db\ActiveRecord
             $filePath = $profile_images_path . '/' . $fileName;
             $this->image->saveAs($filePath);
             
-            Image::getImagine()->open($filePath)->thumbnail(new Box(220, 220))->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
-            Image::getImagine()->open($filePath)->thumbnail(new Box(500, 500))->save($profile_images_path. '/medium-'.$fileName , ['quality' => 90]);
+            Image::thumbnail($filePath ,250, 190)->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
+            Image::thumbnail($filePath ,500, 375)->save($profile_images_path. '/medium-'.$fileName , ['quality' => 90]);
            
            /* $res = \Yii::$app->db->createCommand()->insert('staff_gallery', [
                         'user_id' => $profile_id,

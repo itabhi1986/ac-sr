@@ -44,8 +44,16 @@ print_r($model->path);
 								],
 								
 							]);
-}
-  ?>
+} else
+    {
+        ?>
+    <div class="upload-img">
+								<a href="javascript:void(0);" class="close" id="profile_img" redirectionUrl="" data-id="<?php echo $model->getAttribute('id'); ?>" > X </a>
+								<?= Html::img('@web/uploads/'.$model->user_id.'/profile-image/thumb-'.$model->path, array('class'=>'profile_img') ) ?>
+							</div>
+    <?php
+    }
+    ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

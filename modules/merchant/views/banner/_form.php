@@ -17,10 +17,9 @@ use kartik\file\FileInput;
 ]); ?>
 
     <?= $form->field($model, 'user_id')->hiddenInput(['value'=> Yii::$app->user->getId()])->label(false); ?>
-<?php if($model->path=='')
+<?php if(empty($model->path))
 {
-    echo $form->field($model, 'path')->widget(FileInput::classname(), [
-	 $form->field($model, 'path')->widget(FileInput::classname(), [
+    echo  $form->field($model, 'path')->widget(FileInput::classname(), [
 							    'options' => ['class' =>'','accept' => 'image/*'],
 								'pluginOptions' => [
 									'allowedFileExtensions'=>['jpg','gif','png','jpeg'],
@@ -41,9 +40,17 @@ use kartik\file\FileInput;
 								    //'resizePreference'=> 'width',
 									'previewFileType' => 'image',
 									
-								],
-								
-]); } ?>
+								]							
+]); } else
+    {
+        ?>
+    <div class="upload-img">
+								<a href="javascript:void(0);" class="close" id="profile_img" redirectionUrl="" data-id="<?php echo $model->getAttribute('id'); ?>" > X </a>
+								<?= Html::img('@web/uploads/'.$model->user_id.'/banner-image/thumb-'.$model->path, array('class'=>'profile_img') ) ?>
+							</div>
+    <?php
+    }
+    ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

@@ -31,10 +31,10 @@ use kartik\file\FileInput;
 									//'browseClass' => 'input-group-lg',
 									'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
 									'browseLabel' =>  'Upload/ChangePhoto',
-									'minFileSize'=>50,  //100kb
+									'minFileSize'=>5,  //100kb
 									'maxFileSize'=>2048,  //2mb  
-									'minImageWidth'=> 500,
-									'minImageHeight'=> 500,
+									'minImageWidth'=> 300,
+									'minImageHeight'=> 300,
 									//'resizeImage'=> true,
 								    //'maxImageWidth'=> 1000, 
 									//'maxImageHeight'=> 1095,
@@ -43,7 +43,16 @@ use kartik\file\FileInput;
 									
 								],
 								
-]); } ?>
+]); } else
+    {
+        ?>
+    <div class="upload-img">
+								<a href="javascript:void(0);" class="close" id="profile_img" redirectionUrl="" data-id="<?php echo $model->getAttribute('id'); ?>" > X </a>
+								<?= Html::img('@web/uploads/'.$model->user_id.'/staff_image/thumb-'.$model->path, array('class'=>'profile_img') ) ?>
+							</div>
+    <?php
+    }
+    ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

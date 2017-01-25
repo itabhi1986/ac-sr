@@ -153,4 +153,38 @@ class PhotoGallery extends \yii\db\ActiveRecord
            
             
         }
+        
+         public function getAllDetailsByProfileID($profileID,$size=NULL)
+        {
+             if($size!=NULL)
+             {
+                 
+                 if($size=="thumb")
+                 {
+                 $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/gallery_image/thumb-";
+                 }
+                 if($size=="medium")
+                 {
+                 $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/gallery_image/medium-";
+                 }
+                 
+             }
+            else{
+                $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/gallery_image/";
+            }
+        
+             //print_r($profile_images_path);exit;
+             $connection = \Yii::$app->db;
+             $data = $connection->createCommand("SELECT path,name, sub_tittle  from photo_gallery where user_id='".$profileID."'");
+             $data = $data->queryAll();
+             $imageArray = [];
+             foreach($data as $key=>$value)
+             {
+                  $imageArray[$key]['path']=$profile_images_path.$value['path'];
+                 $imageArray[$key]['name']=$value['name'];
+                 $imageArray[$key]['sub_tittle']=$value['sub_tittle'];
+             }
+             return $imageArray;
+            
+        }
 }

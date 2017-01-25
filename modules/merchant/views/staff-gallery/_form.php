@@ -33,8 +33,8 @@ use kartik\file\FileInput;
 									'browseLabel' =>  'Upload/ChangePhoto',
 									'minFileSize'=>5,  //100kb
 									'maxFileSize'=>2048,  //2mb  
-									'minImageWidth'=> 300,
-									'minImageHeight'=> 300,
+									'minImageWidth'=> 375,
+									'minImageHeight'=> 270,
 									//'resizeImage'=> true,
 								    //'maxImageWidth'=> 1000, 
 									//'maxImageHeight'=> 1095,

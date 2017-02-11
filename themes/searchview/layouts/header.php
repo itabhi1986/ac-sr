@@ -10,8 +10,8 @@ use yii\bootstrap\NavBar;
       <div class="row clearfix">
         <div class="col-md-12 column">
           <div class="row clearfix">
-            <div class="col-md-3 col-sm-3 column"> <img alt="140x140" src="<?php echo $theme->getUrl('/images/logo.png'); ?>" class="fl logo"> </div>
-             <div class="col-md-4 col-sm-4 column about-search">
+            <div class="col-md-3 col-sm-5 column"> <img alt="140x140" src="<?php echo $theme->getUrl('/images/logo.png'); ?>" class="fl logo"> </div>
+             <div class="col-md-4 col-sm-7 column about-search hidden-xs">
                 <div class="main_search_box">
                   <div class="search_box_outer">
                     <div class="search_box">
@@ -28,9 +28,8 @@ use yii\bootstrap\NavBar;
                   </div>
                 </div>
              </div>
-          <div class="col-md-5 col-sm-5 about-nav  column right_logo">
+          <div class="col-md-5 col-sm-12 about-nav  column right_logo">
           <nav role="navigation" class="navbar navbar-default home-nav ">
-          <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"">
           <span class="sr-only">Toggle navigation</span>
@@ -59,7 +58,24 @@ use yii\bootstrap\NavBar;
                     ?>
                     
             
-         </div> </div></nav> </div>
+         </div> </nav> </div>
+            <div class="col-md-4 col-sm-6 column about-search hidden-sm hidden-lg hidden-md">
+                <div class="main_search_box">
+                  <div class="search_box_outer">
+                    <div class="search_box">
+                     <div class="input-append">
+                          <form action="/search/" method="get">
+                         <input class="span1 top_search" id="appendedInputButton" type="text" placeholder="search..." name="s"/>
+                         
+                         <button type="submit" class="btn top_search_btn">
+                             </form>
+                          <i class="icon-search"></i>
+                        </buttton>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+             </div>
           </div>
         </div>
       </div>

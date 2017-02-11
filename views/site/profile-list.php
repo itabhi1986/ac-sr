@@ -20,8 +20,8 @@ $imageURL= $baseURL."/themes/searchview/images/";
  
         echo '<div class=" categories">
         <div class="clearfix ">
-        <div class="col-md-3 col-sm-4 col-xs-4 clsmd3 full-width"><img src='.$imagepath.'> </div>
-        <div class="col-md-9 col-sm-8 col-xs-8 full-width clsmd6"> 
+        <div class="col-md-3 col-sm-4 col-xs-12 clsmd3 full-width"><img src='.$imagepath.'> </div>
+        <div class="col-md-9 col-sm-8 col-xs-12 full-width clsmd6"> 
         <span class="clstitle">
          <a href="/'.$value['category_slug'].'/'.$value['profile_slug'].'/">'.$value['name'].'</a></span> ';
            echo '<span class="customer_desc"><strong> Address: </strong>'.$value['address'].'</span>';

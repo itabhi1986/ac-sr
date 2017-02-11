@@ -15,6 +15,7 @@ use app\models\Profile;
 use app\models\Banner;
 use app\models\Profileimage;
 use app\models\ProfileSearch;
+use app\models\UserContactForm;
 
 class SiteController extends Controller {
 
@@ -136,11 +137,12 @@ class SiteController extends Controller {
         $profileDetails = Profile::getProfileDetails($profileID);
         $bannerImages = Banner::getBannerPathByProfileID($profileID);
         //$bannerImages = Profileimage::getProfileimagePathByProfileID($profileID);
-
+        $model = new UserContactForm();
         return $this->render(
                         "profile", [
                     'profile' => $profileDetails,
-                    'bannerImages' => $bannerImages
+                    'bannerImages' => $bannerImages,
+                     'model'=>$model
         ]);
     }
     

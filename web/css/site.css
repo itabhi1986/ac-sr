@@ -833,3 +833,7 @@ background-size: cover;
 .collapse.navbar-collapse{ padding:0px;}
 
 }
+
+.outer_container {
+   margin: 0px 0 60px;
+}

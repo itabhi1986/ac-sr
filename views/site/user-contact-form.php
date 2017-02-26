@@ -8,8 +8,18 @@ use yii\widgets\ActiveForm;
 /* @var $form ActiveForm */
 ?>
 <div class="site-user-contact-form">
-
-    <?php $form = ActiveForm::begin(); ?>
+  <?php   
+    if (\Yii::$app->session->hasFlash('success'))
+  {?>
+    <div class="alert alert-success alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong></strong> <?= Yii::$app->session->getFlash('success'); ?>
+  </div>
+    <?php } ?>
+ 
+    <?php $form = ActiveForm::begin(['id' => 'user-contact',
+        
+        'options' => ['enctype' => 'multipart/form-data']]); ?>
        
         <?= $form->field($model, 'name')->textInput(['placeholder' => "Enter Your Name"])->label(false) ?>
     

@@ -57,6 +57,7 @@ $config = [
 	        ), */
 		'rules' => [
                       '/site/captcha/'=>'/site/captcha/',
+                      '/site/usercontact/'=>'/site/usercontact/',
 			'' => '/site/index',
                       
                         '/search/'=>'/site/search-profile/',
@@ -69,7 +70,7 @@ $config = [
                         'user-profile/photo-gallery/'=> 'user-profile/photo-gallery/',
                         'user-profile/profile-image/'=> 'user-profile/profile-image/',
                          'user-profile/get-cities'=>'user-profile/get-cities',
-                        'user-profile/<action:\w+>/'=>'user-profile/<action>/',
+                        'user-profile/<action:\w+>/'=>'user-profile/<action>/',                        
                         'user/login/'=>'user/security/login/',
                           [
                                'pattern' => 'sitemap-schedule',

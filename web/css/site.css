@@ -831,6 +831,7 @@ background-size: cover;
     margin: 0 11px;
 	}
 .collapse.navbar-collapse{ padding:0px;}
+.copyright p{text-align: left !important;}
 
 }
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e057e9e6109278ba89f30ecc7623dd0a",
-    "content-hash": "1f871234527dfa1d0ade84f0998ec213",
+    "hash": "c29182c05d50172139ab8b109c0d3a0c",
+    "content-hash": "5fcbd23ee73b116e9b995a6ae80dd2b3",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -219,6 +219,51 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bupy7/yii2-widget-cropbox",
+            "version": "v2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bupy7/yii2-widget-cropbox.git",
+                "reference": "31e708435ac7ff72c64e6c17cf95adad7eb986d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bupy7/yii2-widget-cropbox/zipball/31e708435ac7ff72c64e6c17cf95adad7eb986d8",
+                "reference": "31e708435ac7ff72c64e6c17cf95adad7eb986d8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bupy7\\cropbox\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Vasilij Belosludcev",
+                    "email": "bupy765@gmail.com",
+                    "homepage": "http://mihaly4.ru"
+                }
+            ],
+            "description": "This is widget wrapper and fork of Cropbox https://github.com/hongkhanh/cropbox . This widget allows crop image before upload to server and send informations about crop in JSON format.",
+            "homepage": "https://github.com/bupy7/yii2-widget-cropbox",
+            "keywords": [
+                "crop image",
+                "extension",
+                "image",
+                "widget",
+                "yii2"
+            ],
+            "time": "2015-02-18 06:22:13"
         },
         {
             "name": "cebe/markdown",
@@ -1334,6 +1379,79 @@
     ],
     "packages-dev": [
         {
+            "name": "bower-asset/jq-cropbox",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bupy7/jquery-cropbox.git",
+                "reference": "292013d58981f0bcc740d347c5e71971b68c5a48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bupy7/jquery-cropbox/zipball/292013d58981f0bcc740d347c5e71971b68c5a48",
+                "reference": "292013d58981f0bcc740d347c5e71971b68c5a48",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8",
+                "bower-asset/jquery-mousewheel": "*"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/*.js",
+                    "dist/*.css",
+                    "src/*.js",
+                    "src/*.css"
+                ],
+                "bower-asset-ignore": [
+                    ".*",
+                    "*.md",
+                    "/scripts"
+                ]
+            },
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "description": "A lightweight and simple plugin to crop your image.",
+            "keywords": [
+                "crop",
+                "cropbox",
+                "image"
+            ]
+        },
+        {
+            "name": "bower-asset/jquery-mousewheel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jquery/jquery-mousewheel.git",
+                "reference": "33dc8f1090da2eaadbca8e782965d7fd6c28db42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jquery/jquery-mousewheel/zipball/33dc8f1090da2eaadbca8e782965d7fd6c28db42",
+                "reference": "33dc8f1090da2eaadbca8e782965d7fd6c28db42",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.2.2"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "./jquery.mousewheel.js",
+                "bower-asset-ignore": [
+                    "*.json",
+                    "*.markdown",
+                    "*.txt",
+                    ".*",
+                    "!LICENSE.txt",
+                    "Gruntfile.js",
+                    "test"
+                ]
+            }
+        },
+        {
             "name": "bower-asset/typeahead.js",
             "version": "v0.11.1",
             "source": {
@@ -1640,6 +1758,53 @@
                 "yii2"
             ],
             "time": "2016-05-12 20:54:42"
+        },
+        {
+            "name": "yiisoft/yii2-httpclient",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-httpclient.git",
+                "reference": "1153df649a711608b80db09b9e32d942c6d28001"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-httpclient/zipball/1153df649a711608b80db09b9e32d942c6d28001",
+                "reference": "1153df649a711608b80db09b9e32d942c6d28001",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\httpclient\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "HTTP client extension for the Yii framework",
+            "keywords": [
+                "curl",
+                "http",
+                "httpclient",
+                "yii2"
+            ],
+            "time": "2017-02-15 14:28:44"
         }
     ],
     "aliases": [],

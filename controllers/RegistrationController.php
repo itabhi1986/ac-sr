@@ -21,7 +21,9 @@ class RegistrationController extends BaseRegistrationController {
         $this->performAjaxValidation($model);
         
         if (\Yii::$app->request->post()) {
-          $postData = \Yii::$app->request->post();
+            $postData = \Yii::$app->request->post();
+            
+            
             $model->name = $postData['register-form']['name'];
             $model->username = $postData['register-form']['username'];
             $model->email = $postData['register-form']['email'];

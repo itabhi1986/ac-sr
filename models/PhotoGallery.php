@@ -9,6 +9,8 @@ use Imagine\Gd;
 use Imagine\Image\Box;
 use Imagine\Image\BoxInterface;
 use yii\db\Query;
+use yii\helpers\Json;
+use Imagine\Image\Point;
 
 /**
  * This is the model class for table "photo_gallery".
@@ -26,6 +28,7 @@ class PhotoGallery extends \yii\db\ActiveRecord
      */
     
     public $image;
+    public $crop_info;
     public static function tableName()
     {
         return 'photo_gallery';
@@ -42,6 +45,10 @@ class PhotoGallery extends \yii\db\ActiveRecord
             [['path'], 'string', 'max' => 255],
             [['name', 'sub_tittle'], 'string', 'max' => 100],
            // [['image'], 'file', 'extensions'=>'jpg, gif, png'],
+             ['image', 'image', 'extensions' => ['jpg', 'jpeg', 'png', 'gif'],
+                'mimeTypes' => ['image/jpeg', 'image/pjpeg', 'image/png', 'image/gif'],
+                ],
+            ['crop_info', 'safe'],
         ];
     }
 
@@ -59,7 +66,7 @@ class PhotoGallery extends \yii\db\ActiveRecord
         ];
     }
     
-   public function saveImages($profile_id,$image,$data){
+   public function saveImages($profile_id,$image,$data,$crop_info=null){
      
      
      $this->image = $image;
@@ -76,9 +83,30 @@ class PhotoGallery extends \yii\db\ActiveRecord
             $fileName =  str_replace(' ', '_', strtotime(date("Y-m-d h:i:s")).'-'.$this->image->baseName) . '.' . $this->image->extension;
             $filePath = $profile_images_path . '/' . $fileName;
             $this->image->saveAs($filePath);
+             $this->image = null;
+            $image = Image::getImagine()->open($filePath);
+            $cropInfo = Json::decode($crop_info)[0];
+            if(isset($cropInfo['dw'],$cropInfo['dh'],$cropInfo['x'],$cropInfo['y']))
+            {
+            $cropInfo['dw'] = (int)$cropInfo['dw']; //new width image
+            $cropInfo['dh'] = (int)$cropInfo['dh']; //new height image
+            $cropInfo['x'] = abs($cropInfo['x']); //begin position of frame crop by X
+            $cropInfo['y'] = abs($cropInfo['y']);
             
-            Image::thumbnail($filePath ,250, 190)->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
-            Image::thumbnail($filePath ,500, 375)->save($profile_images_path. '/medium-'.$fileName , ['quality' => 90]);
+            
+            $newSizeThumb = new Box($cropInfo['dw'], $cropInfo['dh']);
+            $cropSizeThumb = new Box(307, 336); //frame size of crop
+            $cropPointThumb = new Point($cropInfo['x'], $cropInfo['y']);
+            
+           
+            $image->resize($newSizeThumb)
+                ->crop($cropPointThumb, $cropSizeThumb)
+                ->save($filePath, ['quality' => 100]);
+            }
+            
+            
+            Image::thumbnail($filePath ,307, 336)->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
+            Image::thumbnail($filePath ,375, 500)->save($profile_images_path. '/medium-'.$fileName , ['quality' => 90]);
            
             /*$res = \Yii::$app->db->createCommand()->insert('photo_gallery', [
                         'user_id' => $profile_id,

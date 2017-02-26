@@ -225,6 +225,7 @@ class UserProfileController extends Controller
                  $staffImages = StaffGallery::getImagePathByProfileID($user_id,'thumb');
     	}
         
+       
         
         if ($model->load(Yii::$app->request->post())){
             $image = UploadedFile::getInstance($model, 'path');

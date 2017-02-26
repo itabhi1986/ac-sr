@@ -16,6 +16,8 @@ use app\models\Banner;
 use app\models\Profileimage;
 use app\models\ProfileSearch;
 use app\models\UserContactForm;
+use yii\web\Response;
+use yii\bootstrap\ActiveForm;
 
 class SiteController extends Controller {
 
@@ -136,14 +138,67 @@ class SiteController extends Controller {
 
         $profileDetails = Profile::getProfileDetails($profileID);
         $bannerImages = Banner::getBannerPathByProfileID($profileID);
-        //$bannerImages = Profileimage::getProfileimagePathByProfileID($profileID);
+        //$bannerImages = Profileimage::getProfileimagePathByProfileID($profileID);  
+            
         $model = new UserContactForm();
+         if ($model->load(Yii::$app->request->post())) {
+           
+             if($model->validate())
+             {
+                  $model->save();
+                  
+                  \Yii::$app->mailer
+                            ->compose('usercontact',['model'=>$model])
+                            ->setFrom("abhishek.chauhan@redblink.com")
+                            ->setTo("abhishek.it.1986@gmail.com")
+                            ->setReplyTo(array("no-reply@search2city.com"))                           
+                            ->setSubject("A user has contacted from the website")
+                            ->send();
+                 \Yii::$app->getSession()->setFlash('success', 'Email Sent successfully');
+                 
+                 unset($_POST);
+                 
+                $model = new UserContactForm();
+                return $this->render(
+                        "profile", [
+                    'profile' => $profileDetails,
+                    'bannerImages' => $bannerImages,
+                     'model'=>$model
+        ]);
+                  
+             }
+             
+                 
+               
+           
+        } 
+        
         return $this->render(
                         "profile", [
                     'profile' => $profileDetails,
                     'bannerImages' => $bannerImages,
                      'model'=>$model
         ]);
+    }
+    
+    public function actionUsercontact()
+    {
+        $model = new UserContactForm();
+         
+        if (Yii::$app->request->isAjax) {
+               $model->load($_POST);
+                
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                if($model->validate())
+                {
+                    
+                   
+                }
+                else {
+                    return ActiveForm::validate($model);
+                }
+                
+            }
     }
     
     

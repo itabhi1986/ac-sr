@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use Yii;
 use kartik\file\FileInput;
+use bupy7\cropbox\Cropbox;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\StaffGallery */
@@ -19,8 +20,21 @@ use kartik\file\FileInput;
      <?= $form->field($model, 'user_id')->hiddenInput(['value'=> Yii::$app->user->getId()])->label(false); ?>
 
     <?php if($model->path=='')
-{
-    echo	 $form->field($model, 'path')->widget(FileInput::classname(), [
+    {
+       
+        
+         echo $form->field($model, 'path')->widget(Cropbox::className(), ['attributeCropInfo' => 'crop_info', 'optionsCropbox' => [
+                                                                                'boxWidth' => 350,
+                                                                                'boxHeight' => 350,
+                                                                                'cropSettings' => [
+                                                                                    [
+                                                                                        'width' => 307,
+                                                                                        'height' => 336,
+                                                                                    ],
+                                                                                ],
+                                                                            ],]);
+                                      
+    /*echo	 $form->field($model, 'path')->widget(FileInput::classname(), [
 							    'options' => ['class' =>'','accept' => 'image/*'],
 								'pluginOptions' => [
 									'allowedFileExtensions'=>['jpg','gif','png','jpeg'],
@@ -43,7 +57,7 @@ use kartik\file\FileInput;
 									
 								],
 								
-]); } else
+]);*/ } else
     {
         ?>
     <div class="upload-img">

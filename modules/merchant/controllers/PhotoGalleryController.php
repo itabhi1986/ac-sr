@@ -86,7 +86,13 @@ class PhotoGalleryController extends Controller
             
             if (isset($image) && !empty($image)) {
                 
-                $img_res = $model->saveImages($user_id, $image,Yii::$app->request->post());
+                $crop_info = NULL;
+                $post_data =Yii::$app->request->post();
+                if (isset($post_data['PhotoGallery']['crop_info'])) {
+                    $crop_info = $post_data['PhotoGallery']['crop_info'];
+                }
+                
+                $img_res = $model->saveImages($user_id, $image,Yii::$app->request->post(),$crop_info);
                     if($img_res)
                     {
                         $model->path= $img_res;

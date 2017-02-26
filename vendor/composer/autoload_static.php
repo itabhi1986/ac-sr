@@ -18,6 +18,7 @@ class ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f
             'yii\\redactor\\' => 13,
             'yii\\jui\\' => 8,
             'yii\\imagine\\' => 12,
+            'yii\\httpclient\\' => 15,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
@@ -48,6 +49,10 @@ class ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f
         array (
             'cebe\\markdown\\' => 14,
         ),
+        'b' => 
+        array (
+            'bupy7\\cropbox\\' => 14,
+        ),
         'F' => 
         array (
             'Faker\\' => 6,
@@ -70,6 +75,10 @@ class ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f
         'yii\\imagine\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-imagine',
+        ),
+        'yii\\httpclient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-httpclient',
         ),
         'yii\\gii\\' => 
         array (
@@ -138,6 +147,10 @@ class ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'bupy7\\cropbox\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bupy7/yii2-widget-cropbox',
         ),
         'Faker\\' => 
         array (

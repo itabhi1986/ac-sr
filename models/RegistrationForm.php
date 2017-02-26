@@ -51,6 +51,7 @@ class RegistrationForm extends BaseRegistrationForm {
     public function rules()
     {
         $rules = parent::rules();
+        
         $rules[] = ['name', 'required'];
         $rules[] = ['name', 'string', 'max' => 255];
         $rules[] =['phone','integer'];

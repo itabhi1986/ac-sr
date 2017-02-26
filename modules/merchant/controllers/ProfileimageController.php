@@ -80,8 +80,13 @@ class ProfileimageController extends Controller {
             $user_id = Yii::$app->user->getId();
             
             if (isset($image) && !empty($image)) {
+                 $crop_info = NULL;
+                $post_data =Yii::$app->request->post();
+                if (isset($post_data['Profileimage']['crop_info'])) {
+                    $crop_info = $post_data['Profileimage']['crop_info'];
+                }
                 
-                $img_res = $model->saveImages($user_id, $image,Yii::$app->request->post());
+                $img_res = $model->saveImages($user_id, $image,Yii::$app->request->post(),$crop_info);
                     if($img_res)
                     {
                         $model->path= $img_res;

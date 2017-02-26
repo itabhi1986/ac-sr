@@ -158,4 +158,22 @@ return array (
       '@kartik/file' => $vendorDir . '/kartik-v/yii2-widget-fileinput',
     ),
   ),
+  'yiisoft/yii2-httpclient' => 
+  array (
+    'name' => 'yiisoft/yii2-httpclient',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@yii/httpclient' => $vendorDir . '/yiisoft/yii2-httpclient',
+    ),
+  ),
+  'bupy7/yii2-widget-cropbox' => 
+  array (
+    'name' => 'bupy7/yii2-widget-cropbox',
+    'version' => '2.2.0.0',
+    'alias' => 
+    array (
+      '@bupy7/cropbox' => $vendorDir . '/bupy7/yii2-widget-cropbox',
+    ),
+  ),
 );

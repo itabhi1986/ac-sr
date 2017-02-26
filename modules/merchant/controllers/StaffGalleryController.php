@@ -85,19 +85,18 @@ class StaffGalleryController extends Controller
             $user_id = Yii::$app->user->getId();
             
             if (isset($image) && !empty($image)) {
-                
-                $img_res = $model->saveImages($user_id, $image,Yii::$app->request->post());
-                    if($img_res)
-                    {
-                        $model->path= $img_res;
-                        $model->save();
-                        
-                              
-                      
-                    }
-                     return $this->redirect(['view', 'id' => $model->id]);
+                $crop_info = NULL;
+                $post_data =Yii::$app->request->post();
+                if (isset($post_data['StaffGallery']['crop_info'])) {
+                    $crop_info = $post_data['StaffGallery']['crop_info'];
+                }
+                $img_res = $model->saveImages($user_id, $image, Yii::$app->request->post(),$crop_info);
+                if ($img_res) {
+                    $model->path = $img_res;
+                    $model->save();
+                }
+                return $this->redirect(['view', 'id' => $model->id]);
             }
-           
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -114,7 +113,7 @@ class StaffGalleryController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        
         if ($model->load(Yii::$app->request->post())) {
             
             $image = UploadedFile::getInstance($model, 'path');

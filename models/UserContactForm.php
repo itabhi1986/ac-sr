@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "user_contact_form".
  *
- * @property integer $if
+ * @property integer $id
  * @property integer $user_id
  * @property string $name
  * @property string $phone
@@ -30,9 +30,12 @@ class UserContactForm extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['if', 'name', 'phone', 'email', 'message'], 'required'],
-            [['if', 'user_id'], 'integer'],
+            [['user_id'], 'integer'],
+            [['name', 'phone', 'email', 'message'], 'required'],
             [['name', 'phone', 'email', 'message'], 'string', 'max' => 255],
+            [['email'],'email'],
+            [['phone'],'integer','message'=>"Phone Number should be 10 Digit Number only."],
+            [[ 'phone'], 'string', 'length' => 10],
         ];
     }
 
@@ -42,7 +45,7 @@ class UserContactForm extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'if' => 'If',
+            'id' => 'ID',
             'user_id' => 'User ID',
             'name' => 'Name',
             'phone' => 'Phone',

@@ -9,6 +9,8 @@ use Imagine\Gd;
 use Imagine\Image\Box;
 use Imagine\Image\BoxInterface;
 use yii\db\Query;
+use yii\helpers\Json;
+use Imagine\Image\Point;
 
 /**
  * This is the model class for table "profileimage".
@@ -27,6 +29,7 @@ class Profileimage extends \yii\db\ActiveRecord
      */
     
     public $profileImage;
+    public $crop_info;
     
     public static function tableName()
     {
@@ -63,7 +66,7 @@ class Profileimage extends \yii\db\ActiveRecord
         ];
     }
     
-     public function saveImages($profile_id,$image,$data){
+     public function saveImages($profile_id,$image,$data,$crop_info=NULL){
      
      
      $this->profileImage = $image;
@@ -81,8 +84,28 @@ class Profileimage extends \yii\db\ActiveRecord
             $fileName =  str_replace(' ', '_', strtotime(date("Y-m-d h:i:s")).'-'.$this->profileImage->baseName) . '.' . $this->profileImage->extension;
             $filePath = $profile_images_path . '/' . $fileName;
             $this->profileImage->saveAs($filePath);
+            $this->profileImage = null;
+            $image = Image::getImagine()->open($filePath);
+            $cropInfo = Json::decode($crop_info)[0];
+            if(isset($cropInfo['dw'],$cropInfo['dh'],$cropInfo['x'],$cropInfo['y']))
+            {
+            $cropInfo['dw'] = (int)$cropInfo['dw']; //new width image
+            $cropInfo['dh'] = (int)$cropInfo['dh']; //new height image
+            $cropInfo['x'] = abs($cropInfo['x']); //begin position of frame crop by X
+            $cropInfo['y'] = abs($cropInfo['y']);
+            
+            
+            $newSizeThumb = new Box($cropInfo['dw'], $cropInfo['dh']);
+            $cropSizeThumb = new Box(307, 336); //frame size of crop
+            $cropPointThumb = new Point($cropInfo['x'], $cropInfo['y']);
+            
+           
+            $image->resize($newSizeThumb)
+                ->crop($cropPointThumb, $cropSizeThumb)
+                ->save($filePath, ['quality' => 100]);
+            }
             chmod($filePath,0777);
-            Image::getImagine()->open($filePath)->thumbnail(new Box(700, 220))->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
+            Image::getImagine()->open($filePath)->thumbnail(new Box(307, 336))->save($profile_images_path. '/thumb-'.$fileName , ['quality' => 90]);
             chmod($profile_images_path. '/thumb-'.$fileName,0777);
            
             /*$res = \Yii::$app->db->createCommand()->insert('profileimage', [

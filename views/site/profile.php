@@ -65,11 +65,21 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                        
                                             <span class="clstitle"><?php if(isset($profile['name'])){echo $profile['name']; } ?></span> <br>
                                             <div class="customer_desc">
-                                                <?php $profileImage = Profileimage::getProfileimagePathByProfileID($profile['user_id'],"thumb");
+                                                <?php $profileImages = Profileimage::getProfileimagedetailsByProfileID($profile['user_id'],"thumb");
+                                        foreach($profileImages as $pk=>$pv)
+                                        {
+                                            
+                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"><div class="img-thum"> <img src="'.$pv['path'].'" alt=""> </div>'
+                                                    . '<div>'.$pv['name'].'</div>'
+                                                    . '<div>'.$pv['heading'].'</div>'
+                                                    . '</div>';
+                                        }
+                                        ?>
+                                                <?php /*$profileImage = Profileimage::getProfileimagePathByProfileID($profile['user_id'],"thumb");
                                         foreach($profileImage as $pk=>$pv)
                                         {
                                             echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <img src="'.$pv.'" alt=""> </div>';
-                                        }
+                                        }*/
                                         ?>
                                                 <?php echo $profile['description'] ; ?></div> <br>
 

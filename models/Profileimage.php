@@ -151,4 +151,49 @@ class Profileimage extends \yii\db\ActiveRecord
              return $imageArray;
             
         }
+        
+        
+        
+        public function getProfileimagedetailsByProfileID($profileID,$size=NULL)
+        {
+             if($size!=NULL)
+             {
+                 
+                 if($size=="thumb")
+                 {
+                 $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/profile-image/thumb-";
+                 }
+                 if($size=="medium")
+                 {
+                 $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/profile-image/medium-";
+                 }
+                 
+             }
+            else{
+                $profile_images_path = Yii::$app->homeUrl . "uploads/" . $profileID . "/profile-image/";
+            }
+        
+             //print_r($profile_images_path);exit;
+             $connection = \Yii::$app->db;
+             $data = $connection->createCommand("SELECT * from profileimage where user_id='".$profileID."' order by id desc limit 1");
+             $data = $data->queryAll();
+             
+             $imageArray = [];
+             foreach($data as $key=>$value)
+             {
+                 foreach($value as $k =>$v)
+                 {
+                     if($k=="path")
+                     {
+                        $imageArray[$key][$k]=$profile_images_path.$v;
+                     }
+                     else
+                     {
+                         $imageArray[$key][$k]=$v;
+                     }
+                 }
+             }
+             return $imageArray;
+            
+        }
 }

@@ -506,7 +506,7 @@ img.logo1 {
     max-width: 320px;
 }
 .top_contant_bg {
-    /*background:url(../images/slider_img2.jpg) no-repeat top center;*/
+    background:#fff;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -702,7 +702,7 @@ div#important-links ul {
     padding:5px 10px;
     margin: 0px;
 }
-.customer_desc .thumbnail_images img{ border:1px solid #ccc; padding:3px; border-radius:5px;}
+.customer_desc .thumbnail_images img{  padding:3px; border-radius:5px;}
 .customer_desc .column.thumbnail_images {
     padding: 0 20px 0 0;
     float: left;
@@ -752,9 +752,32 @@ background-size: cover;
     height: 100%;
     min-height: 300px;
     width: 100%;
+	background-position:center;
 }
-
-
+.img-title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.img-discription {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom:8px;
+	height:35px;
+}
+.thum-dic{ white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 5px;}
+.thumnail {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 3px;
+    border-radius: 5px;
+}
+.thumnail .img-thum{ border:none;}
 @media only screen and (max-width: 960px) and (min-width: 768px){
 	.about-nav {
     margin-top: 10px;
@@ -785,14 +808,21 @@ background-size: cover;
 }
 
 }
-@media (max-width: 414px) and (min-width: 320px){
-.top_search {
-    height: 44px !important;
-    padding: 0 10px !important;
+
+@media only screen and (max-width: 767px) { 
+.homefooter .bottom_footer{ position:relative;}
+.top_contant_bg{ height:400px}
+.outer_container{ margin:0;}
+
+.copyright p, .copyright.text-left{ text-align:center;}
+#bottom_footer_menu li {
+    list-style-type: none;
+    float: unset;
+    margin: 0 12px;
+    display: inline-block;
 }
 
-}
-@media only screen and (max-width: 767px) { img.logo1 {
+img.logo1 {
     max-width: 200px;
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
@@ -822,6 +852,14 @@ background-size: cover;
 .about-nav{ margin-top:15px;}
 }
 
+@media (max-width: 414px) and (min-width: 320px){
+.top_search {
+    height: 44px !important;
+    padding: 0 10px !important;
+}
+.top_contant_bg{ height:300px}
+.outer_container{ margin:0;}
+}
 @media only screen and (max-width: 1024px)  and (min-width: 992px)
 {
 .container {

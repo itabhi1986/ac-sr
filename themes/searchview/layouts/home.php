@@ -28,7 +28,7 @@ $theme = $this->theme;
 body{font-family: 'Open Sans', sans-serif;}
 </style>
     </head>
-    <body>
+    <body  class="homefooter">
 <?php $this->beginBody() ?>
       
                 <?php $this->beginContent('@app/themes/searchview/layouts/home_header.php', ['theme' => $theme, 'baseurl' => $baseurl]); ?>

@@ -57,22 +57,21 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                     </div>
 
                                 </div>
-                            <div class="row">
-                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 column ">
+                                <div class="row">
                                 <div class=" column mT60">
-                                    <h2 id="about-us">About us</h2>
+                                            <div class="customer_desc col-md-9 col-sm-8 col-xs-12">
+                                             <h2 id="about-us">About us</h2>
                                     
                                        
-                                            <span class="clstitle"><?php if(isset($profile['name'])){echo $profile['name']; } ?></span> <br>
-                                            <div class="customer_desc">
+                                            <span class="clstitle"><?php if(isset($profile['name'])){echo $profile['name']; } ?></span> 
                                                 <?php $profileImages = Profileimage::getProfileimagedetailsByProfileID($profile['user_id'],"thumb");
                                         foreach($profileImages as $pk=>$pv)
                                         {
                                             
-                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"><div class="img-thum"> <img src="'.$pv['path'].'" alt=""> </div>'
-                                                    . '<div>'.$pv['name'].'</div>'
-                                                    . '<div>'.$pv['heading'].'</div>'
-                                                    . '</div>';
+                                            echo'<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 column thumbnail_images"><div class="thumnail"> <div class="img-thum"> <img src="'.$pv['path'].'" alt=""> </div>'
+                                                    . '<div class="img-title">'.$pv['name'].'</div>'
+                                                    . '<div class="thum-dic">'.$pv['heading'].'</div>'
+                                                    . '</div> </div>';
                                         }
                                         ?>
                                                 <?php /*$profileImage = Profileimage::getProfileimagePathByProfileID($profile['user_id'],"thumb");
@@ -81,23 +80,43 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                             echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <img src="'.$pv.'" alt=""> </div>';
                                         }*/
                                         ?>
-                                                <?php echo $profile['description'] ; ?></div> <br>
+                                                <?php echo $profile['description'] ; ?></div> 
 
 
 
 
+                                        
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 column" id="important-links">
+                                            
+                                    <div class=" column ">
+                                        <h2 >Important Links</h2>
+                                    <ul><?php 
+                                                $links = Links::getAllLinksbyUserID($profile['user_id']);
+                                               foreach ($links as $link)
+                                               {
+                                                   echo "<li><a href='".$link['link']."' target='_balnk'><span>".$link['tittle']."</span></a></li>"; //<span>".$link['desc']."</span>
+                                               }
+                                            ?>
+                                            </ul>
+                                        <div class="addbanner">
+                                             <img src="<?php // echo $imageURL."contactus.jpg"?>">
+                                            
                                         </div>
+                                        </div>
+                                </div>
+                                        </div>
+                                </div>
                                             <div class="gallery mT60" id="staff">
                                     <h2>Staff Details</h2>
-                                    <div class=" clearfix" >
+                                    <div class=" clearfix row" >
                                         <?php $profileImages = StaffGallery::getAllDetailsByProfileID($profile['user_id'],"medium");
                                         foreach($profileImages as $pk=>$pv)
                                         {
                                             
-                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"><div class="img-thum"> <img src="'.$pv['path'].'" alt=""> </div>'
-                                                    . '<div>'.$pv['name'].'</div>'
-                                                    . '<div>'.$pv['sub_tittle'].'</div>'
-                                                    . '</div>';
+                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"><div class="thumnail"><div class="img-thum"> <img src="'.$pv['path'].'" alt=""> </div> '
+                                                    . '<div class="img-title">'.$pv['name'].'</div>'
+                                                    . '<div class="img-discription">'.$pv['sub_tittle'].'</div>'
+                                                    . '</div>  </div>';
                                         }
                                         ?>
                                         
@@ -105,15 +124,15 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                 </div>
                                      <div class="gallery mT60" id="photo-gallery">
                                     <h2>Photo gallery</h2>
-                                    <div class=" clearfix" >
+                                    <div class=" clearfix row" >
                                         <?php $profileImages = PhotoGallery::getAllDetailsByProfileID($profile['user_id'],"medium");
                                         foreach($profileImages as $pk=>$pv)
                                         {
                                             
-                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"> <div class="img-thum"><img src="'.$pv['path'].'" alt=""></div> '
-                                                    . '<div>'.$pv['name'].'</div>'
-                                                    . '<div>'.$pv['sub_tittle'].'</div>'
-                                                    . '</div>';
+                                            echo'<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 column thumbnail_images"><div class="thumnail"> <div class="img-thum"><img src="'.$pv['path'].'" alt=""></div> '
+                                                    . '<div class="img-title">'.$pv['name'].'</div>'
+                                                    . '<div class="img-discription">'.$pv['sub_tittle'].'</div>'
+                                                    . '</div> </div>';
                                         }
                                         ?>
                                         
@@ -122,13 +141,13 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                 <div class=" column mT60" id="contact-us">
                                     <h2>Get In touch with Us</h2>
                                    
-                                    <div class="">
-                                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 column ">
+                                    <div class="row">
+                                        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 column ">
                                             
                                             <span class="clstitle">Fill the form below and we will contact you</span>
                                              <?php echo $this->render("user-contact-form",['model'=>$model]);?>
                                                                                     </div>
-                                        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 column ">
+                                        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 column ">
                                             <span class="clstitle">Contact us</span>
                                              <p class="address-profile">
                                             <?php if(isset($profile['address'])){echo "<strong>Address : </strong>".$profile['address']; } ?><br>
@@ -141,25 +160,7 @@ $imageURL= $baseURL."/themes/searchview/images/";
                                     </div>
                                 </div>           
                                     </div>
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 column" id="important-links">
-                                            
-                                    <div class=" column mT60">
-                                        <h2 >Important Links</h2>
-                                    <ul><?php 
-                                                $links = Links::getAllLinksbyUserID($profile['user_id']);
-                                               foreach ($links as $link)
-                                               {
-                                                   echo "<li><a href='".$link['link']."' target='_balnk'><span>".$link['tittle']."</span></a><span>".$link['desc']."</span></li>";
-                                               }
-                                            ?>
-                                            </ul>
-                                        <div class="addbanner">
-                                             <img src="<?php echo $imageURL."contactus.jpg"?>">
-                                            
-                                        </div>
-                                        </div>
                                 
-                                </div>
 
                             
                                 
@@ -169,7 +170,6 @@ $imageURL= $baseURL."/themes/searchview/images/";
 
 
                             </div>
-                        </div>
 
 
 

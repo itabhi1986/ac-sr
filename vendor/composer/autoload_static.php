@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f
+class ComposerStaticInitb2d46438c29c20fc443b15af8e6e7104
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
@@ -16,7 +16,6 @@ class ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f
         array (
             'yii\\swiftmailer\\' => 16,
             'yii\\redactor\\' => 13,
-            'yii\\jui\\' => 8,
             'yii\\imagine\\' => 12,
             'yii\\httpclient\\' => 15,
             'yii\\gii\\' => 8,
@@ -67,10 +66,6 @@ class ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f
         'yii\\redactor\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiidoc/yii2-redactor',
-        ),
-        'yii\\jui\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-jui',
         ),
         'yii\\imagine\\' => 
         array (
@@ -192,9 +187,9 @@ class ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitbd366ed8495a3af04e5fc1b63d3dba4f::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb2d46438c29c20fc443b15af8e6e7104::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb2d46438c29c20fc443b15af8e6e7104::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb2d46438c29c20fc443b15af8e6e7104::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
